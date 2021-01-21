@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   toolbar: {
     ...theme.mixins.toolbar,
     marginBottom: '3em',

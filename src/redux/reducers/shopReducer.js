@@ -11,21 +11,7 @@ const INITIAL_STATE = {
 const shopReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_COLLECTIONS_SUCCESS:
-      const collections = { electronics: [], jewelry: [], men: [], women: [] };
-
-      action.payload.forEach(p =>
-        p.category === 'electronics'
-          ? collections.electronics.push(p)
-          : p.category === 'jewelry'
-          ? collections.jewelry.push(p)
-          : p.category === 'men clothing'
-          ? collections.men.push(p)
-          : p.category === 'women clothing'
-          ? collections.women.push(p)
-          : null
-      );
-
-      return { ...state, collections: collections };
+      return { ...state, collections: action.payload };
     case FETCH_COLLECTIONS_FAILURE:
       return { ...state, errMeassage: action.payload };
     default:

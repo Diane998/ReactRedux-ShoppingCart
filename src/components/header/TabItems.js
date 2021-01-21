@@ -6,7 +6,7 @@ import { routes } from './routes';
 import { Tabs, Tab } from '@material-ui/core';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   tabContainer: { marginLeft: 'auto', marginRight: '2em' },
   tab: {
     ...theme.typography.tab,
@@ -55,7 +55,7 @@ const TabItems = ({ tabIndex, setTabIndex }) => {
         indicatorColor='primary'
       >
         {routes.map(({ name, link }, i) =>
-          i !== 4 ? (
+          i !== 5 ? (
             <Tab
               key={name}
               className={classes.tab}
@@ -68,7 +68,7 @@ const TabItems = ({ tabIndex, setTabIndex }) => {
               key={name}
               icon={<ShoppingCartOutlinedIcon />}
               className={classes.tab}
-              onClick={(e) => console.log('cart icon clicked')}
+              onClick={e => console.log('cart icon clicked')}
             />
           )
         )}
