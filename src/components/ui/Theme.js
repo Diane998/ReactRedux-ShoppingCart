@@ -3,13 +3,15 @@ import { createMuiTheme } from '@material-ui/core/styles';
 const white = '#ffff',
   arcBlue = '#0B72B9',
   arcOrange = '#FFBA60',
-  arcGrey = '#868686';
+  arcGrey = '#868686',
+  black = 'black';
 
 export default createMuiTheme({
   palette: {
     common: {
       blue: arcBlue,
-      orange: arcOrange
+      orange: arcOrange,
+      black: 'black'
     },
     primary: {
       main: white
@@ -24,37 +26,22 @@ export default createMuiTheme({
       color: 'black',
       fontSize: '1rem'
     },
-    estimate: {
-      fontFamily: 'Pacifico',
-      fontSize: '1rem',
-      textTransform: 'none',
-      color: 'white'
-    },
     h2: {
       fontWeight: 700,
-      fontSize: '2.5rem',
-      color: arcBlue,
+      fontSize: '2rem',
+      color: black,
       lineHeight: 1.5
     },
     h3: {
-      fontFamily: 'Pacifico',
-      fontSize: '2.5rem',
-      color: arcBlue
+      fontSize: '2.5rem'
     },
     h4: {
       fontSize: '1.75rem',
-      color: arcBlue,
       fontWeight: 700
-    },
-    h6: {
-      fontWeight: 500,
-
-      color: arcBlue
     },
     subtitle1: {
       fontSize: '1.25rem',
-      fontWeight: 300,
-      color: arcGrey
+      fontWeight: 300
     },
     subtitle2: {
       color: 'white',
@@ -65,6 +52,11 @@ export default createMuiTheme({
       fontSize: '1.25rem',
       color: arcGrey,
       fontWeight: 300
+    },
+    body2: {
+      fontSize: '1.2rem',
+      color: black,
+      fontWeight: 350
     },
     caption: {
       fontSize: '1rem',
