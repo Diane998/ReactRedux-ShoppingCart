@@ -6,7 +6,8 @@ import theme from './ui/Theme';
 import HeaderContainer from '../containers/HeaderContainer';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
-import Collection from './pages/Collection';
+import Collections from './pages/Collections';
+import CollectionContainer from '../containers/CollectionContainer';
 import About from './pages/About';
 import Auth from './pages/Auth';
 import Checkout from './pages/Checkout';
@@ -29,9 +30,15 @@ class App extends Component {
               render={() => <Shop collections={this.props.collections} />}
             />
             <Route
-              path='/collection'
+              path='/collections'
               exact
-              render={() => <Collection collections={this.props.collections} />}
+              render={() => (
+                <Collections collections={this.props.collections} />
+              )}
+            />
+            <Route
+              path='/collections/:collection_id'
+              component={CollectionContainer}
             />
             <Route path='/about' exact component={About} />
             <Route path='/auth' exact component={Auth} />
