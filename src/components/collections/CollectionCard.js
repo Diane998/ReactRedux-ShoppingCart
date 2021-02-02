@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import {
   Grid,
   Card,
@@ -9,9 +10,10 @@ import {
 } from '@material-ui/core';
 
 const CollectionCard = ({
-  collection: { title, imageUrl, description },
+  collection: { title, imageUrl, description, routeName },
   classes,
-  matchesMD
+  matchesMD,
+  history
 }) => (
   <Grid item>
     <Card
@@ -21,6 +23,7 @@ const CollectionCard = ({
         boxShadow: 'none',
         maxWidth: matchesMD ? 410 : 345
       }}
+      onClick={() => history.push(`${history.location.pathname}/${routeName}`)}
     >
       <CardActionArea>
         <CardMedia className={classes.media} image={imageUrl} />
@@ -49,4 +52,4 @@ const CollectionCard = ({
   </Grid>
 );
 
-export default CollectionCard;
+export default withRouter(CollectionCard);
