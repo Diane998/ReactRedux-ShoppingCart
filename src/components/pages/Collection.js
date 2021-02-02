@@ -1,36 +1,49 @@
 import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
-import { Grid, Typography } from '@material-ui/core';
-import CollectionCardContainer from '../../containers/CollectionCardContainer';
+import { Grid, Typography, CardMedia } from '@material-ui/core';
+import CollectionItemPreview from '../collection/CollectionItemPreview';
 
-const Collection = ({ collections }) => {
+const Collection = ({ collection: { collectionPage, title, items } }) => {
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
 
+  console.log(items);
   return (
     <Grid
       container
       spacing={3}
       justify='center'
-      style={{ padding: matchesMD ? '0 2em' : '0 5em' }}
+      style={{ padding: matchesMD ? '0 0' : '0 5em' }}
     >
-      <Grid item xs={12} style={{ margin: '2.5em 0' }}>
-        <Typography align='center' variant='h2'>
-          DISCOVER OUR COLLECTIONS
+      <Grid item align='center' xs={12}>
+        <CardMedia
+          style={{
+            width: matchesMD ? '100%' : '86%',
+            height: matchesMD ? '20vh' : 550
+          }}
+          image={collectionPage.imageUrl}
+        />
+      </Grid>
+      <Grid item align='center' xs={12} style={{ margin: '2em 0' }}>
+        <Typography align='center' style={{ fontSize: '3em', color: 'black' }}>
+          {title.toUpperCase()}
         </Typography>
         <Typography
           align='center'
           variant='body2'
-          style={{ margin: '2.4em 5em' }}
+          style={{ margin: matchesMD ? '1.5em 1em' : '2em 25%' }}
         >
-          Designed with attitude and crafted with passion, our collections
-          combine Dutch design with Swiss engineering.
+          {collectionPage.description}
         </Typography>
       </Grid>
-      {collections.map((collection, i) => (
-        <CollectionCardContainer key={i} collection={collection} />
-      ))}
+      <Grid item container spacing={3} direction='row' justify='center' xs={12}>
+        {items.map(({ id, ...otherProps }) => (
+          <Grid item key={id}>
+            <CollectionItemPreview id={id} {...otherProps} />
+          </Grid>
+        ))}
+      </Grid>
     </Grid>
   );
 };
