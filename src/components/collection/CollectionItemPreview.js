@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const CollectionItemPreview = ({ collection, id, itemPage, name }) => {
+const CollectionItemPreview = ({ collection, id, itemPage, name, price }) => {
   const classes = useStyles();
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
@@ -54,19 +54,32 @@ const CollectionItemPreview = ({ collection, id, itemPage, name }) => {
                 gutterBottom
                 variant='h2'
                 component='h2'
+                align='left'
                 style={{
                   position: 'absolute',
                   top: '8em',
-                  left: 25
+                  left: '0.5em'
                 }}
               >
                 {name}
+              </Typography>
+              <Typography
+                gutterBottom
+                variant='h4'
+                style={{
+                  position: 'absolute',
+                  top: '11em',
+                  right: '0.5em'
+                }}
+              >
+                ${price}
               </Typography>
             </div>
             <Typography
               variant='body2'
               component='p'
-              style={{ color: 'grey', margin: '2.8em 0 0 25px' }}
+              align='left'
+              style={{ color: 'grey', left: '0.5em', marginTop: '2.8em' }}
             >
               {collection.toUpperCase()}
             </Typography>
