@@ -7,8 +7,8 @@ import CollectionItemPreview from '../collection/CollectionItemPreview';
 const Collection = ({ collection: { collectionPage, title, items } }) => {
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
+  const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
 
-  console.log(items);
   return (
     <Grid
       container
@@ -19,8 +19,8 @@ const Collection = ({ collection: { collectionPage, title, items } }) => {
       <Grid item align='center' xs={12}>
         <CardMedia
           style={{
-            width: matchesMD ? '100%' : '86%',
-            height: matchesMD ? '20vh' : 550
+            width: matchesSM ? '100vw' : '86vw',
+            height: matchesSM ? '20vh' : matchesMD ? '40vh`' : '50vh'
           }}
           image={collectionPage.imageUrl}
         />
