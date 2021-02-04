@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import {
   Grid,
   Card,
@@ -30,15 +29,24 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const CollectionItemPreview = ({ collection, id, itemPage, name, price }) => {
+const CollectionItemPreview = ({
+  collection,
+  id,
+  itemPage,
+  name,
+  price,
+  routeName,
+  history
+}) => {
   const classes = useStyles();
-  const theme = useTheme();
-  const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <Grid item>
       <Card
         className={classes.root}
+        onClick={() =>
+          history.push(`${history.location.pathname}/${routeName}`)
+        }
         style={{
           border: 'none',
           boxShadow: 'none',
@@ -90,4 +98,4 @@ const CollectionItemPreview = ({ collection, id, itemPage, name, price }) => {
   );
 };
 
-export default CollectionItemPreview;
+export default withRouter(CollectionItemPreview);
