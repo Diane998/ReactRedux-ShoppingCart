@@ -6,8 +6,8 @@ import CollectionItemPreview from '../collection/CollectionItemPreview';
 
 const Collection = ({ collection: { collectionPage, title, items } }) => {
   const theme = useTheme();
-  const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
+  const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <Grid

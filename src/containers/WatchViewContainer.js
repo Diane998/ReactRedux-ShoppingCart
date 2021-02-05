@@ -9,7 +9,8 @@ const mapStateToProps = ({ shop: { collections } }, ownProps) => {
       ? itemObj
       : null
   );
-  return { watch: watch[0].itemPage };
+
+  return { watch: watch[0] };
 };
 
 const WatchViewContainer = connect(mapStateToProps)(WatchView);
