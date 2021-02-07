@@ -1,7 +1,7 @@
 import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme, makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography, Button } from '@material-ui/core';
+import { Grid, Typography, Button, CardMedia, Paper } from '@material-ui/core';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import ImageCarousel from './ImageCarousel';
 
@@ -20,7 +20,7 @@ const WatchView = ({ watch }) => {
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
 
-  console.log('component', watch);
+  console.log(watch.itemPage.specs);
 
   const {
     collection,
@@ -74,6 +74,55 @@ const WatchView = ({ watch }) => {
             ADD TO CART
           </Button>
         </Grid>
+      </Grid>
+      <Grid
+        item
+        container
+        direction={matchesMD ? 'column' : 'row'}
+        justify='space-around'
+        style={{ width: '80vw', margin: '10em 0' }}
+      >
+        <Grid item container justify='center' style={{ margin: '2em 0' }}>
+          <Typography variant='h1' component='h1'>
+            SPECS
+          </Typography>
+        </Grid>
+        {specs.map(({ description, imageUrl }, i) => (
+          <Grid
+            key={i}
+            item
+            container
+            direction='column'
+            md
+            alignItems='center'
+            style={{ maxWidth: '40em' }}
+          >
+            <Grid item>
+              <Paper
+                style={{
+                  backgroundColor: 'rgba(0,0,0,0.1)',
+                  padding: '0 1em',
+                  borderRadius: 0
+                }}
+              >
+                <CardMedia
+                  style={{
+                    width: matchesSM ? '100vw' : '300px',
+                    height: matchesSM ? '40vh' : '230px'
+                  }}
+                  image={imageUrl}
+                />
+              </Paper>
+            </Grid>
+            <Grid item style={{ width: '300px' }}>
+              {description.map((d, i) => (
+                <li key={i} style={{ margin: '0.8em 0' }}>
+                  {d}
+                </li>
+              ))}
+            </Grid>
+          </Grid>
+        ))}
       </Grid>
     </Grid>
   );
