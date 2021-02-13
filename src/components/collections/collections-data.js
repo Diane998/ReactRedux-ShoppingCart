@@ -16,7 +16,7 @@ export const SHOP_DATA = {
       {
         id: 'tw1017',
         name: 'TW1017',
-        collection: 'Fast Lane',
+        collectionName: 'Fast Lane',
         price: 339,
         routeName: 'tw1017',
         itemPage: {
@@ -66,7 +66,7 @@ export const SHOP_DATA = {
       {
         id: 'tw1019',
         name: 'TW1019',
-        collection: 'Fast Lane',
+        collectionName: 'Fast Lane',
         price: 299,
         routeName: 'tw1019',
         itemPage: {
@@ -116,7 +116,7 @@ export const SHOP_DATA = {
       {
         id: 'tw1018',
         name: 'TW1018',
-        collection: 'Fast Lane',
+        collectionName: 'Fast Lane',
         price: 339,
         routeName: 'tw1018',
         itemPage: {
@@ -166,7 +166,7 @@ export const SHOP_DATA = {
       {
         id: 'svs209',
         name: 'SVS209',
-        collection: 'Fast Lane',
+        collectionName: 'Fast Lane',
         price: 279,
         routeName: 'svs209',
         itemPage: {
@@ -216,7 +216,7 @@ export const SHOP_DATA = {
       {
         id: 'svs208',
         name: 'SVS208',
-        collection: 'Fast Lane',
+        collectionName: 'Fast Lane',
         price: 249,
         routeName: 'svs208',
         itemPage: {
@@ -266,7 +266,7 @@ export const SHOP_DATA = {
       {
         id: 'svs207',
         name: 'SVS207',
-        collection: 'Fast Lane',
+        collectionName: 'Fast Lane',
         price: 279,
         routeName: 'svs207',
         itemPage: {
@@ -332,7 +332,7 @@ export const SHOP_DATA = {
       {
         id: 'ace411',
         name: 'ACE411',
-        collection: 'Ace Diver',
+        collectionName: 'Ace Diver',
         price: 899,
         routeName: 'ace411',
         itemPage: {
@@ -383,7 +383,7 @@ export const SHOP_DATA = {
       {
         id: 'ace410',
         name: 'ACE410',
-        collection: 'Ace Diver',
+        collectionName: 'Ace Diver',
         price: 899,
         routeName: 'ace410',
         itemPage: {
@@ -434,7 +434,7 @@ export const SHOP_DATA = {
       {
         id: 'ace412',
         name: 'ACE412',
-        collection: 'Ace Diver',
+        collectionName: 'Ace Diver',
         price: 949,
         routeName: 'ace412',
         itemPage: {
@@ -485,7 +485,7 @@ export const SHOP_DATA = {
       {
         id: 'ace414',
         name: 'ACE414',
-        collection: 'Ace Diver',
+        collectionName: 'Ace Diver',
         price: 949,
         routeName: 'ace414',
         itemPage: {
@@ -536,7 +536,7 @@ export const SHOP_DATA = {
       {
         id: 'ace413',
         name: 'ACE413',
-        collection: 'Ace Diver',
+        collectionName: 'Ace Diver',
         price: 949,
         routeName: 'ace413',
         itemPage: {
@@ -603,7 +603,7 @@ export const SHOP_DATA = {
       {
         id: 'ms98',
         name: 'MS98',
-        collection: 'Blast Special Editions',
+        collectionName: 'Blast Special Editions',
         price: 239,
         routeName: 'ms98',
         itemPage: {
@@ -652,7 +652,7 @@ export const SHOP_DATA = {
       {
         id: 'vs98',
         name: 'VS98',
-        collection: 'Blast Special Editions',
+        collectionName: 'Blast Special Editions',
         price: 249,
         routeName: 'vs98',
         itemPage: {
@@ -699,7 +699,7 @@ export const SHOP_DATA = {
       {
         id: 'ms99',
         name: 'mS99',
-        collection: 'Blast Special Editions',
+        collectionName: 'Blast Special Editions',
         price: 399,
         routeName: 'ms99',
         itemPage: {
@@ -767,7 +767,7 @@ export const SHOP_DATA = {
       {
         id: 'tw1000',
         name: 'TW1000',
-        collection: 'Canteen',
+        collectionName: 'Canteen',
         price: 349,
         routeName: 'tw1000',
         itemPage: {
@@ -816,7 +816,7 @@ export const SHOP_DATA = {
       {
         id: 'tw1001',
         name: 'TW1001',
-        collection: 'Canteen',
+        collectionName: 'Canteen',
         price: 349,
         routeName: 'tw1001',
         itemPage: {
@@ -865,7 +865,7 @@ export const SHOP_DATA = {
       {
         id: 'tw1010',
         name: 'TW1010',
-        collection: 'Canteen',
+        collectionName: 'Canteen',
         price: 479,
         routeName: 'tw1010',
         itemPage: {
@@ -916,7 +916,7 @@ export const SHOP_DATA = {
       {
         id: 'tw1013',
         name: 'TW1013',
-        collection: 'Canteen',
+        collectionName: 'Canteen',
         price: 499,
         routeName: 'tw1013',
         itemPage: {
@@ -966,7 +966,7 @@ export const SHOP_DATA = {
       {
         id: 'tw1014',
         name: 'TW1014',
-        collection: 'Canteen',
+        collectionName: 'Canteen',
         price: 549,
         routeName: 'tw1014',
         itemPage: {
@@ -1016,7 +1016,7 @@ export const SHOP_DATA = {
       {
         id: 'tw1015',
         name: 'TW1015',
-        collection: 'Canteen',
+        collectionName: 'Canteen',
         price: 549,
         routeName: 'tw1015',
         itemPage: {
@@ -1066,7 +1066,7 @@ export const SHOP_DATA = {
       {
         id: 'tw1016',
         name: 'TW1016',
-        collection: 'Canteen',
+        collectionName: 'Canteen',
         price: 549,
         routeName: 'tw1016',
         itemPage: {
@@ -1132,7 +1132,7 @@ export const SHOP_DATA = {
       {
         id: 'ace123',
         name: 'ACE123',
-        collection: 'Ace Genesis',
+        collectionName: 'Ace Genesis',
         price: 1099,
         routeName: 'ace123',
         itemPage: {
@@ -1186,7 +1186,7 @@ export const SHOP_DATA = {
       {
         id: 'ace121',
         name: 'ACE121',
-        collection: 'Ace Genesis',
+        collectionName: 'Ace Genesis',
         price: 949,
         routeName: 'ace121',
         itemPage: {
@@ -1240,7 +1240,7 @@ export const SHOP_DATA = {
       {
         id: 'ace124',
         name: 'ACE124',
-        collection: 'Ace Genesis',
+        collectionName: 'Ace Genesis',
         price: 1099,
         routeName: 'ace124',
         itemPage: {
@@ -1310,7 +1310,7 @@ export const SHOP_DATA = {
       {
         id: 'ce4035',
         name: 'CE4035',
-        collection: 'CEO Tech 38MM',
+        collectionName: 'CEO Tech 38MM',
         price: 399,
         routeName: 'ce4035',
         itemPage: {
@@ -1360,7 +1360,7 @@ export const SHOP_DATA = {
       {
         id: 'ce4036',
         name: 'CE4036',
-        collection: 'CEO Tech 38MM',
+        collectionName: 'CEO Tech 38MM',
         price: 399,
         routeName: 'ce4036',
         itemPage: {
@@ -1410,7 +1410,7 @@ export const SHOP_DATA = {
       {
         id: 'ce4026',
         name: 'CE4026',
-        collection: 'CEO Tech 38MM',
+        collectionName: 'CEO Tech 38MM',
         price: 339,
         routeName: 'ce4026',
         itemPage: {
