@@ -13,19 +13,20 @@ const Collection = ({ collection: { collectionPage, title, items } }) => {
     <Grid
       container
       spacing={3}
-      justify='center'
-      style={{ padding: matchesMD ? '0 0' : '0 5em' }}
+      style={{
+        width: matchesMD ? '100vw' : '80vw',
+        margin: '0 auto'
+      }}
     >
-      <Grid item align='center' xs={12}>
+      <Grid item align='center' xs={12} style={{ padding: 0 }}>
         <CardMedia
           style={{
-            width: matchesSM ? '100vw' : '86vw',
-            height: matchesSM ? '20vh' : matchesMD ? '40vh`' : '50vh'
+            height: matchesSM ? '20vh' : matchesMD ? '30vh' : '50vh'
           }}
           image={collectionPage.imageUrl}
         />
       </Grid>
-      <Grid item align='center' xs={12} style={{ margin: '2em 0' }}>
+      <Grid item style={{ margin: '2em 0' }}>
         <Typography align='center' style={{ fontSize: '3em', color: 'black' }}>
           {title.toUpperCase()}
         </Typography>
@@ -36,10 +37,22 @@ const Collection = ({ collection: { collectionPage, title, items } }) => {
         >
           {collectionPage.description}
         </Typography>
+        <Typography
+          align='center'
+          style={{ fontSize: '3em', color: 'black', margin: '4em 0 0.5em 0' }}
+        >
+          MEET THE {title.toUpperCase()}
+        </Typography>
       </Grid>
-      <Grid item container spacing={3} direction='row' justify='center' xs={12}>
+      <Grid
+        item
+        container
+        justify='center'
+        spacing={3}
+        style={{ margin: '0 auto', padding: 0 }}
+      >
         {items.map(({ id, ...otherProps }) => (
-          <Grid item key={id}>
+          <Grid item key={id} style={{ margin: '0.5em 0' }}>
             <CollectionItemPreview id={id} {...otherProps} />
           </Grid>
         ))}
