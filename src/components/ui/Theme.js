@@ -22,44 +22,54 @@ export default createMuiTheme({
   },
   typography: {
     tab: {
+      fontWeight: 400,
       textTransform: 'none',
       color: 'black',
-      fontSize: '1rem'
+      fontSize: '1em'
+    },
+    h1: {
+      fontWeight: 400,
+      fontSize: '3em',
+      color: black,
+      lineHeight: 1.5
     },
     h2: {
-      fontWeight: 700,
-      fontSize: '2rem',
+      fontWeight: 400,
+      fontSize: '2.5em',
       color: black,
       lineHeight: 1.5
     },
     h3: {
-      fontSize: '2.5rem'
+      fontWeight: 700,
+      fontSize: '2em',
+      color: black,
+      lineHeight: 1.5
     },
     h4: {
-      fontSize: '1.5rem',
-      fontWeight: 700
+      fontSize: '1.5em',
+      fontWeight: 400
     },
     subtitle1: {
-      fontSize: '1.25rem',
+      fontSize: '1.25em',
       fontWeight: 300
     },
     subtitle2: {
       color: 'white',
       fontWeight: 300,
-      fontSize: '1.25rem'
+      fontSize: '1.2em'
     },
     body1: {
-      fontSize: '1.25rem',
+      fontSize: '1.25em',
       color: arcGrey,
       fontWeight: 300
     },
     body2: {
-      fontSize: '1.2rem',
+      fontSize: '1.2em',
       color: black,
       fontWeight: 350
     },
     caption: {
-      fontSize: '1rem',
+      fontSize: '1em',
       fontWeight: 300,
       color: arcGrey
     }
@@ -68,7 +78,7 @@ export default createMuiTheme({
     MuiInputLabel: {
       root: {
         color: white,
-        fontSize: '1rem'
+        fontSize: '1em'
       }
     },
     MuiInput: {
