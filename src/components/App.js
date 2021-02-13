@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from './ui/Theme';
+// import { addCollectionAndDocuments } from '../firebase/firebase.utils';
 
 import HeaderContainer from '../containers/HeaderContainer';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
-import Collections from './pages/Collections';
+import CollectionsContainer from '../containers/CollectionsContainer';
 import CollectionContainer from '../containers/CollectionContainer';
 import WatchViewContainer from '../containers/WatchViewContainer';
 import About from './pages/About';
@@ -15,6 +16,7 @@ import Checkout from './pages/Checkout';
 
 class App extends Component {
   componentDidMount() {
+    // addCollectionAndDocuments('collections', this.props.collections);
     this.props.fetchCollections();
   }
 
@@ -25,18 +27,8 @@ class App extends Component {
           <HeaderContainer />
           <Switch>
             <Route path='/' exact component={Home} />
-            <Route
-              path='/shop'
-              exact
-              render={() => <Shop collections={this.props.collections} />}
-            />
-            <Route
-              path='/collections'
-              exact
-              render={() => (
-                <Collections collections={this.props.collections} />
-              )}
-            />
+            <Route path='/shop' exact component={Shop} />
+            <Route path='/collections' exact component={CollectionsContainer} />
             <Route
               path='/collections/:collection_id'
               exact
