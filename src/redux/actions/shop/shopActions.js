@@ -7,11 +7,11 @@ import {
   convertCollectionsSnapshotToMap
 } from '../../../firebase/firebase.utils';
 
-export const fetchCollections = () => dispatch => {
+export const fetchCollections = () => async dispatch => {
   const collectionRef = firestore.collection('collections');
+  const snapshot = await collectionRef.get();
 
   try {
-    const snapshot = collectionRef.get();
     const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
     dispatch({
       type: FETCH_COLLECTIONS_SUCCESS,

@@ -38,12 +38,12 @@ export const convertCollectionsSnapshotToMap = collections => {
     } = doc.data();
 
     return {
-      routeName,
-      title,
-      description,
       collectionPage,
+      description,
       imageUrl,
-      items
+      items,
+      routeName,
+      title
     };
   });
 
