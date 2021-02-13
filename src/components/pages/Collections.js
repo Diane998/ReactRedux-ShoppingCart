@@ -4,35 +4,59 @@ import { useTheme } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
 import CollectionCardContainer from '../../containers/CollectionCardContainer';
 
-const Collection = ({ collections }) => {
+const Collections = ({ collections }) => {
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
+  const matchesLG = useMediaQuery(theme.breakpoints.down('lg'));
 
   return (
     <Grid
       container
       spacing={3}
-      justify='center'
-      style={{ padding: matchesMD ? '0 2em' : '0 5em' }}
+      style={{
+        width: matchesMD ? '95vw' : matchesLG ? '95vw' : '80vw',
+        margin: '0 auto'
+      }}
     >
-      <Grid item xs={12} style={{ margin: '2.5em 0' }}>
-        <Typography align='center' variant='h2'>
+      <Grid item xs={12} style={{ margin: '2em 0' }}>
+        <Typography
+          align='center'
+          variant='h1'
+          style={{
+            color: '#c40d2e',
+            marginBottom: '0.7em',
+            fontSize: matchesMD ? '2em' : '2.5em'
+          }}
+        >
           DISCOVER OUR COLLECTIONS
         </Typography>
         <Typography
           align='center'
           variant='body2'
-          style={{ margin: '2.4em 5em' }}
+          style={{
+            marginBottom: '2em',
+            fontSize: matchesMD ? '1.2em' : '1.5em'
+          }}
         >
           Designed with attitude and crafted with passion, our collections
           combine Dutch design with Swiss engineering.
         </Typography>
       </Grid>
-      {collections.map((collection, i) => (
-        <CollectionCardContainer key={i} collection={collection} />
-      ))}
+      <Grid
+        item
+        container
+        justify='center'
+        spacing={3}
+        style={{ margin: '0 auto', padding: 0 }}
+      >
+        {collections.map((collection, i) => (
+          <Grid item key={i}>
+            <CollectionCardContainer collection={collection} />
+          </Grid>
+        ))}
+      </Grid>
     </Grid>
   );
 };
 
-export default Collection;
+export default Collections;
