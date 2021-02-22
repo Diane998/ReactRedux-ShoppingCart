@@ -78,7 +78,7 @@ const WatchView = ({ watch }) => {
         item
         container
         style={{
-          width: matchesSM ? '100%' : matchesMD ? '65%' : '80vw'
+          width: matchesSM ? '100%' : matchesMD ? '65vw' : '80vw'
         }}
       >
         <Grid item container justify='center'>
