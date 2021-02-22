@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {
   Grid,
   Card,
@@ -15,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     width: 350,
     height: 380,
-    zIndex: 300
+    zIndex: 2
   },
   overlay: {
     position: 'absolute',
@@ -30,7 +31,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const CollectionItemPreview = ({
-  collection,
+  collectionName,
   id,
   itemPage,
   name,
@@ -39,6 +40,8 @@ const CollectionItemPreview = ({
   history
 }) => {
   const classes = useStyles();
+  const theme = useTheme();
+  const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <Grid item>
@@ -87,9 +90,9 @@ const CollectionItemPreview = ({
               variant='body2'
               component='p'
               align='left'
-              style={{ color: 'grey', left: '0.5em', marginTop: '2.8em' }}
+              style={{ color: 'grey', left: '0.5em', marginTop: '4em' }}
             >
-              {collection.toUpperCase()}
+              {collectionName.toUpperCase()}
             </Typography>
           </CardContent>
         </CardActionArea>

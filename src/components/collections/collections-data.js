@@ -1,6 +1,7 @@
 export const SHOP_DATA = {
   fast_lane: {
     title: 'Fast Lane',
+    collectionID: 'fast_lane',
     routeName: 'fast-lane',
     imageUrl:
       'https://cdn.shopify.com/s/files/1/0337/3963/6867/collections/fastlanecollection_540x.png?v=1606301345',
@@ -317,6 +318,7 @@ export const SHOP_DATA = {
   },
   ace_diver: {
     title: 'Ace Diver',
+    collectionID: 'ace_diver',
     routeName: 'ace-diver',
     imageUrl:
       'https://cdn.shopify.com/s/files/1/0337/3963/6867/collections/aceheader_540x.jpg?v=1600250114',
@@ -588,7 +590,8 @@ export const SHOP_DATA = {
   },
   blast_special_editions: {
     title: 'Blast Special Editions',
-    routeName: 'blast_special_editions',
+    collectionID: 'blast_special_edition',
+    routeName: 'blast-special-editions',
     imageUrl:
       'https://cdn.shopify.com/s/files/1/0337/3963/6867/collections/blast-collection.png?v=1591791240',
     description:
@@ -752,6 +755,7 @@ export const SHOP_DATA = {
   },
   canteen: {
     title: 'Canteen',
+    collectionID: 'canteen',
     routeName: 'canteen',
     imageUrl:
       'https://cdn.shopify.com/s/files/1/0337/3963/6867/collections/canteen_collection.png?v=1590572666',
@@ -1117,6 +1121,7 @@ export const SHOP_DATA = {
   },
   ace_genesis: {
     title: 'Ace Genesis',
+    collectionID: 'ace_genesis',
     routeName: 'ace-genesis',
     imageUrl:
       'https://cdn.shopify.com/s/files/1/0337/3963/6867/collections/ace124.png?v=1587486201',
@@ -1295,7 +1300,8 @@ export const SHOP_DATA = {
   },
   ceo_tech_38mm: {
     title: 'CEO Tech 38MM',
-    routeName: 'ceo_tech_38mm',
+    collectionID: 'ceo_tech_38mm',
+    routeName: 'ceo-tech-38mm',
     imageUrl:
       'https://cdn.shopify.com/s/files/1/0337/3963/6867/collections/31_ce4032_4.png?v=1587478180',
     description:

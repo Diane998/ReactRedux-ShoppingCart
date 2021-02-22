@@ -29,6 +29,7 @@ firebase.initializeApp(firebaseConfig);
 export const convertCollectionsSnapshotToMap = collections => {
   const transformedCollection = collections.docs.map(doc => {
     const {
+      collectionID,
       collectionPage,
       description,
       imageUrl,
@@ -38,6 +39,7 @@ export const convertCollectionsSnapshotToMap = collections => {
     } = doc.data();
 
     return {
+      collectionID,
       collectionPage,
       description,
       imageUrl,

@@ -4,17 +4,24 @@ import { useTheme } from '@material-ui/core/styles';
 import { CardMedia, Paper, Grid } from '@material-ui/core';
 import Carousel from 'react-material-ui-carousel';
 
-const Indicators = ({ images, activeIndex, onSetActiveIndex }) => {
+const Indicators = ({ images, activeIndex }) => {
+  const theme = useTheme();
+  const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
+  const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
+
   return (
     <Grid
       container
       justify='flex-end'
-      style={{ position: 'absolute', bottom: '0.5%', right: '0.5%' }}
+      style={{
+        position: 'absolute',
+        bottom: '0.5%',
+        right: '0.5%'
+      }}
     >
       {images.map((img, i) => (
         <Paper
           key={i}
-          onClick={() => onSetActiveIndex(i)}
           style={{
             backgroundColor: 'white',
             padding: '1em',
@@ -46,8 +53,7 @@ const ImageCarousel = ({ imageUrl }) => {
     <Carousel
       animation={'fade'}
       indicators={false}
-      navButtonsAlwaysVisible={false}
-      navButtonsAlwaysInvisible={false}
+      navButtonsAlwaysVisible={matchesMD ? true : false}
       autoPlay={false}
       timeout={0}
     >
@@ -59,8 +65,8 @@ const ImageCarousel = ({ imageUrl }) => {
           >
             <CardMedia
               style={{
-                width: matchesSM ? '100vw' : '35vw',
-                height: matchesSM ? '40vh' : matchesMD ? '60vh`' : '80vh',
+                width: matchesSM ? '90vw' : '500px',
+                height: matchesSM ? '60vh' : '600px',
                 position: 'relative'
               }}
               image={img}

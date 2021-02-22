@@ -13,14 +13,8 @@ export const fetchCollections = () => async dispatch => {
 
   try {
     const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-    dispatch({
-      type: FETCH_COLLECTIONS_SUCCESS,
-      payload: collectionsMap
-    });
+    dispatch({ type: FETCH_COLLECTIONS_SUCCESS, payload: collectionsMap });
   } catch (err) {
-    dispatch({
-      type: FETCH_COLLECTIONS_FAILURE,
-      payload: err.message
-    });
+    dispatch({ type: FETCH_COLLECTIONS_FAILURE, payload: err.message });
   }
 };

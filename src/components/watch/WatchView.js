@@ -20,23 +20,23 @@ const WatchView = ({ watch }) => {
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
 
-  console.log(watch.itemPage.specs);
-
   const {
-    collection,
-    id,
+    collectionName,
     name,
     price,
     itemPage: { description, imageUrl, specs }
-  } = watch;
+  } = watch[0];
   return (
     <Grid container justify='center'>
       <Grid
         item
         container
-        direction={matchesMD ? 'column' : 'row'}
+        direction={matchesSM ? 'column' : 'row'}
         justify='space-around'
-        style={{ width: '80vw' }}
+        style={{
+          width: matchesMD ? '100vw' : '80vw',
+          marginBottom: '6em'
+        }}
       >
         <Grid item>
           <ImageCarousel imageUrl={imageUrl} />
@@ -45,15 +45,14 @@ const WatchView = ({ watch }) => {
           item
           style={{
             width: matchesSM ? '80vw' : '35vw',
-            height: matchesSM ? '40vh' : matchesMD ? '60vh`' : '80vh',
-            marginTop: '3em'
+            marginLeft: matchesSM ? '2em' : 0
           }}
         >
           <Typography variant='h1' component='h1'>
             {name}
           </Typography>
           <Typography variant='h4' component='h4' style={{ color: 'grey' }}>
-            {collection}
+            {collectionName}
           </Typography>
           <Typography
             variant='body2'
@@ -78,11 +77,11 @@ const WatchView = ({ watch }) => {
       <Grid
         item
         container
-        direction={matchesMD ? 'column' : 'row'}
-        justify='space-around'
-        style={{ width: '80vw', margin: '10em 0' }}
+        style={{
+          width: matchesSM ? '100%' : matchesMD ? '65%' : '80vw'
+        }}
       >
-        <Grid item container justify='center' style={{ margin: '2em 0' }}>
+        <Grid item container justify='center'>
           <Typography variant='h1' component='h1'>
             SPECS
           </Typography>
@@ -95,9 +94,12 @@ const WatchView = ({ watch }) => {
             direction='column'
             md
             alignItems='center'
-            style={{ maxWidth: '40em' }}
+            style={{
+              width: matchesMD ? '100vw' : '40em',
+              margin: matchesMD ? '2em 0' : 0
+            }}
           >
-            <Grid item>
+            <Grid item style={{ width: matchesMD ? '100%' : '' }}>
               <Paper
                 style={{
                   backgroundColor: 'rgba(0,0,0,0.1)',
@@ -107,8 +109,8 @@ const WatchView = ({ watch }) => {
               >
                 <CardMedia
                   style={{
-                    width: matchesSM ? '100vw' : '300px',
-                    height: matchesSM ? '40vh' : '230px'
+                    width: matchesSM ? '90vw' : matchesMD ? '60vw' : '300px',
+                    height: matchesSM ? '35vh' : matchesMD ? '40vh' : '230px'
                   }}
                   image={imageUrl}
                 />
