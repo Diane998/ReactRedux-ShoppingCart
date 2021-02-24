@@ -28,13 +28,13 @@ export default createMuiTheme({
       fontSize: '1em'
     },
     h1: {
-      fontWeight: 400,
+      fontWeight: 700,
       fontSize: '3em',
       color: black,
       lineHeight: 1.5
     },
     h2: {
-      fontWeight: 400,
+      fontWeight: 700,
       fontSize: '2.5em',
       color: black,
       lineHeight: 1.5
