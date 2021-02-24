@@ -19,9 +19,9 @@ const CollectionCard = ({
     style={{
       border: 'none',
       boxShadow: 'none',
-      maxWidth: matchesMD ? 410 : 345
+      width: matchesMD ? '100vw' : 345
     }}
-    onClick={() => history.push(`${history.location.pathname}/${routeName}`)}
+    onClick={() => history.push(`/collections/${routeName}`)}
   >
     <CardActionArea>
       <CardMedia className={classes.media} image={imageUrl} />
@@ -34,8 +34,7 @@ const CollectionCard = ({
             style={{
               color: 'white',
               position: 'relative',
-              bottom: '-62%',
-              left: '5%'
+              margin: '6em 0.5em'
             }}
           >
             {title.toUpperCase()}
