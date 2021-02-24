@@ -13,6 +13,7 @@ const Collection = ({ collection: { collectionPage, title, items } }) => {
     <Grid
       container
       spacing={3}
+      justify='center'
       style={{
         width: matchesMD ? '100vw' : '80vw',
         margin: '0 auto'
@@ -26,22 +27,32 @@ const Collection = ({ collection: { collectionPage, title, items } }) => {
           image={collectionPage.imageUrl}
         />
       </Grid>
-      <Grid item style={{ margin: '2em 0' }}>
-        <Typography align='center' style={{ fontSize: '3em', color: 'black' }}>
+      <Grid
+        item
+        style={{
+          margin: '1em 0.5em 5em 0.5em',
+          width: matchesMD ? '100%' : '50%'
+        }}
+      >
+        <Typography
+          align='center'
+          style={{
+            fontSize: matchesMD ? '2em' : '3em',
+            color: 'black',
+            margin: '0.5em 0'
+          }}
+        >
           {title.toUpperCase()}
         </Typography>
         <Typography
-          align='center'
+          align={matchesMD ? 'left' : 'center'}
           variant='body2'
-          style={{ margin: matchesMD ? '1.5em 1em' : '2em 25%' }}
+          style={{
+            fontSize: matchesMD ? '1.1em' : '1.25em',
+            lineHeight: '1.7em'
+          }}
         >
           {collectionPage.description}
-        </Typography>
-        <Typography
-          align='center'
-          style={{ fontSize: '3em', color: 'black', margin: '4em 0 0.5em 0' }}
-        >
-          MEET THE {title.toUpperCase()}
         </Typography>
       </Grid>
       <Grid
@@ -51,11 +62,21 @@ const Collection = ({ collection: { collectionPage, title, items } }) => {
         spacing={3}
         style={{ margin: '0 auto', padding: 0 }}
       >
-        {items.map(({ id, ...otherProps }) => (
-          <Grid item key={id} style={{ margin: '0.5em 0' }}>
-            <CollectionItemPreview id={id} {...otherProps} />
-          </Grid>
-        ))}
+        <Grid item>
+          <Typography
+            align='center'
+            style={{ fontSize: matchesMD ? '2em' : '3em', color: 'black' }}
+          >
+            MEET THE {title.toUpperCase()}
+          </Typography>
+        </Grid>
+        <Grid item container spacing={4} justify='center'>
+          {items.map(({ id, ...otherProps }) => (
+            <Grid item key={id} style={{ margin: '0.5em 0' }}>
+              <CollectionItemPreview id={id} {...otherProps} />
+            </Grid>
+          ))}
+        </Grid>
       </Grid>
     </Grid>
   );
