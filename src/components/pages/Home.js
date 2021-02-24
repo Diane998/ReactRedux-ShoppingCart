@@ -10,9 +10,8 @@ const Home = ({ collections, history }) => {
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
   const [sliderIndex, setSliderIndex] = useState(0);
 
-  console.log(collections);
   return (
-    <Grid container justify='center'>
+    <Grid container justify='center' style={{ width: '100vw' }}>
       <Grid
         item
         container
@@ -21,7 +20,7 @@ const Home = ({ collections, history }) => {
         direction={matchesMD ? 'column' : 'row'}
         style={{ margin: '0 0 6em 0' }}
       >
-        <Grid item style={{ width: '100vw', padding: 0 }}>
+        <Grid item style={{ padding: 0 }}>
           <Carousel
             onChange={i => setSliderIndex(i)}
             animation={'fade'}
@@ -36,7 +35,7 @@ const Home = ({ collections, history }) => {
                 <CardMedia
                   style={{
                     width: matchesMD ? '100vw' : '80vw',
-                    height: matchesMD ? '30vh' : '85vh',
+                    height: matchesMD ? '30vh' : '80vh',
                     position: 'relative'
                   }}
                   image={c.collectionPage.imageUrl}
@@ -103,7 +102,7 @@ const Home = ({ collections, history }) => {
           UNASHAMED TO BE DIFFERENT
         </Typography>
         <Typography
-          lign={matchesMD ? 'left' : 'center'}
+          align={matchesMD ? 'left' : 'center'}
           variant='body2'
           style={{
             lineHeight: '1.7em'
