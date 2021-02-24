@@ -44,21 +44,15 @@ const WatchView = ({ watch }) => {
         <Grid
           item
           style={{
-            width: matchesSM ? '80vw' : '35vw',
-            marginLeft: matchesSM ? '2em' : 0
+            width: matchesSM ? '90vw' : '35vw',
+            margin: matchesMD ? '0 1em' : 0
           }}
         >
-          <Typography variant='h1' component='h1'>
-            {name}
-          </Typography>
-          <Typography variant='h4' component='h4' style={{ color: 'grey' }}>
+          <Typography variant='h2'>{name}</Typography>
+          <Typography variant='h4' style={{ color: 'grey' }}>
             {collectionName}
           </Typography>
-          <Typography
-            variant='body2'
-            component='p'
-            style={{ color: 'black', margin: '2em 0' }}
-          >
+          <Typography variant='body2' style={{ margin: '2em 0' }}>
             {description}
           </Typography>
           <Typography variant='h3' component='h3'>
@@ -82,7 +76,7 @@ const WatchView = ({ watch }) => {
         }}
       >
         <Grid item container justify='center'>
-          <Typography variant='h1' component='h1'>
+          <Typography variant='h2' component='h1' style={{ margin: '1em 0' }}>
             SPECS
           </Typography>
         </Grid>
