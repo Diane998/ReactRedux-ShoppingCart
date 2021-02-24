@@ -36,8 +36,8 @@ const Collection = ({ collection: { collectionPage, title, items } }) => {
       >
         <Typography
           align='center'
+          variant={matchesMD ? 'h3' : 'h1'}
           style={{
-            fontSize: matchesMD ? '2em' : '3em',
             color: 'black',
             margin: '0.5em 0'
           }}
@@ -48,7 +48,6 @@ const Collection = ({ collection: { collectionPage, title, items } }) => {
           align={matchesMD ? 'left' : 'center'}
           variant='body2'
           style={{
-            fontSize: matchesMD ? '1.1em' : '1.25em',
             lineHeight: '1.7em'
           }}
         >
@@ -65,7 +64,8 @@ const Collection = ({ collection: { collectionPage, title, items } }) => {
         <Grid item>
           <Typography
             align='center'
-            style={{ fontSize: matchesMD ? '2em' : '3em', color: 'black' }}
+            variant={matchesMD ? 'h3' : 'h1'}
+            style={{ color: 'black' }}
           >
             MEET THE {title.toUpperCase()}
           </Typography>
