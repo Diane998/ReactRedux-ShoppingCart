@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
-import Home from '../components/pages/Home';
+import { fetchCollections } from '../redux/actions/shop/shopActions';
+
+import Home from '../components/Home';
 
 const mapStateToProps = ({ shop: { collections } }) => ({
   collections: collections
@@ -7,6 +9,4 @@ const mapStateToProps = ({ shop: { collections } }) => ({
     : null
 });
 
-const HomenContainer = connect(mapStateToProps)(Home);
-
-export default HomenContainer;
+export default connect(mapStateToProps, { fetchCollections })(Home);

@@ -57,7 +57,7 @@ const CollectionItemPreview = ({
           height: 480
         }}
       >
-        <CardActionArea>
+        <CardActionArea disableRipple>
           <CardMedia className={classes.media} image={itemPage.imageUrl[0]} />
           <CardContent>
             <div className={classes.overlay}>

@@ -35,10 +35,8 @@ const withMediaQuery = (mediaQueries = []) => Component => props => {
   return <Component {...mediaQueryObj} {...props} />;
 };
 
-const CollectionCardContainer = withStyles(useStyles)(
+export default withStyles(useStyles)(
   withMediaQuery([['matchesMD', theme => theme.breakpoints.down('md')]])(
     CollectionCard
   )
 );
-
-export default CollectionCardContainer;

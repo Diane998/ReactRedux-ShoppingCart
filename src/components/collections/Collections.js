@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
 import CollectionCardContainer from '../../containers/CollectionCardContainer';
 
-const Collections = ({ collections }) => {
+const Collections = ({ collections, fetchCollections }) => {
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
   const matchesLG = useMediaQuery(theme.breakpoints.down('lg'));
 
-  return (
+  useEffect(() => {
+    fetchCollections();
+  }, [fetchCollections]);
+
+  return collections ? (
     <Grid
       container
       spacing={3}
@@ -56,7 +60,7 @@ const Collections = ({ collections }) => {
         ))}
       </Grid>
     </Grid>
-  );
+  ) : null;
 };
 
 export default Collections;

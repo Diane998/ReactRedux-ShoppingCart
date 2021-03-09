@@ -55,8 +55,9 @@ const TabItems = ({ tabIndex, setTabIndex }) => {
         indicatorColor='primary'
       >
         {routes.map(({ name, link }, i) =>
-          i !== 5 ? (
+          i !== 4 ? (
             <Tab
+              disableRipple
               key={name}
               className={classes.tab}
               component={Link}

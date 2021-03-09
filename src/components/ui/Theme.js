@@ -11,6 +11,7 @@ export default createMuiTheme({
     common: {
       blue: arcBlue,
       orange: arcOrange,
+      grey: arcGrey,
       black: 'black'
     },
     primary: {

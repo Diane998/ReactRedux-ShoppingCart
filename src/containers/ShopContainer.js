@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
-import Shop from '../components/pages/Shop';
+import { fetchCollections } from '../redux/actions/shop/shopActions';
+
+import Shop from '../components/Shop';
 
 const mapStateToProps = ({ shop: { collections } }) => ({
   collections: collections
@@ -7,6 +9,4 @@ const mapStateToProps = ({ shop: { collections } }) => ({
     : null
 });
 
-const ShopnContainer = connect(mapStateToProps)(Shop);
-
-export default ShopnContainer;
+export default connect(mapStateToProps, { fetchCollections })(Shop);

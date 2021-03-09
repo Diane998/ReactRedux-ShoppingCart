@@ -23,7 +23,7 @@ const CollectionCard = ({
     }}
     onClick={() => history.push(`/collections/${routeName}`)}
   >
-    <CardActionArea>
+    <CardActionArea disableRipple>
       <CardMedia className={classes.media} image={imageUrl} />
       <CardContent>
         <div className={classes.overlay}>

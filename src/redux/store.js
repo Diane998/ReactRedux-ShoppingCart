@@ -12,10 +12,11 @@ const persistConfig = { key: 'root', storage };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = createStore(
-  persistedReducer,
+  // persistedReducer,
+  rootReducer,
   composeEnhancers(applyMiddleware(reduxThunk))
 );
 
-const persistor = persistStore(store);
+// const persistor = persistStore(store);
 
-export { store, persistor };
+export { store };

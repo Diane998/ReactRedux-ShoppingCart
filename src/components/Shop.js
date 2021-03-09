@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {
@@ -12,7 +12,7 @@ import {
   InputAdornment
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import CollectionItemPreview from '../collection/CollectionItemPreview';
+import CollectionItemPreview from './collection/CollectionItemPreview';
 
 const useStyles = makeStyles(theme => ({
   accordionDetails: { margin: '0 1em' },
@@ -23,6 +23,9 @@ const useStyles = makeStyles(theme => ({
     '& .MuiInput-underline:after': {
       borderBottomColor: 'blue'
     },
+    '& .MuiInput-underline:before': {
+      borderBottomColor: theme.palette.common.grey
+    },
     '& .MuiFormLabel-root': { color: 'black' },
     width: '70%',
     margin: '0.5em 0'
@@ -32,13 +35,17 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Shop = ({ collections }) => {
+const Shop = ({ collections, fetchCollections }) => {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
 
-  return collections.length ? (
+  useEffect(() => {
+    fetchCollections();
+  }, [fetchCollections]);
+
+  return collections ? (
     <Grid
       container
       direction={matchesMD ? 'column' : 'row'}
@@ -97,7 +104,6 @@ const Shop = ({ collections }) => {
               <FormControl className={classes.margin}>
                 <TextField
                   className={classes.textField}
-                  id='standard-basic'
                   label='From'
                   InputProps={{
                     className: classes.input,
@@ -108,7 +114,6 @@ const Shop = ({ collections }) => {
                 />
                 <TextField
                   className={classes.textField}
-                  id='standard-basic'
                   label='Until'
                   InputProps={{
                     className: classes.input,

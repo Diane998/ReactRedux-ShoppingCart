@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import { Grid, Typography, CardMedia } from '@material-ui/core';
-import CollectionItemPreview from '../collection/CollectionItemPreview';
+import CollectionItemPreview from './CollectionItemPreview';
 
-const Collection = ({ collection: { collectionPage, title, items } }) => {
+const Collection = ({ collection, fetchCollections }) => {
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
 
-  return (
+  useEffect(() => {
+    fetchCollections();
+  }, [fetchCollections]);
+
+  return collection ? (
     <Grid
       container
       spacing={3}
@@ -24,7 +28,7 @@ const Collection = ({ collection: { collectionPage, title, items } }) => {
           style={{
             height: matchesSM ? '20vh' : matchesMD ? '30vh' : '50vh'
           }}
-          image={collectionPage.imageUrl}
+          image={collection.collectionPage.imageUrl}
         />
       </Grid>
       <Grid
@@ -42,7 +46,7 @@ const Collection = ({ collection: { collectionPage, title, items } }) => {
             margin: '0.5em 0'
           }}
         >
-          {title.toUpperCase()}
+          {collection.title.toUpperCase()}
         </Typography>
         <Typography
           align={matchesMD ? 'left' : 'center'}
@@ -51,7 +55,7 @@ const Collection = ({ collection: { collectionPage, title, items } }) => {
             lineHeight: '1.7em'
           }}
         >
-          {collectionPage.description}
+          {collection.collectionPage.description}
         </Typography>
       </Grid>
       <Grid
@@ -67,11 +71,11 @@ const Collection = ({ collection: { collectionPage, title, items } }) => {
             variant={matchesMD ? 'h3' : 'h1'}
             style={{ color: 'black' }}
           >
-            MEET THE {title.toUpperCase()}
+            MEET THE {collection.title.toUpperCase()}
           </Typography>
         </Grid>
         <Grid item container spacing={4} justify='center'>
-          {items.map(({ id, ...otherProps }) => (
+          {collection.items.map(({ id, ...otherProps }) => (
             <Grid item key={id} style={{ margin: '0.5em 0' }}>
               <CollectionItemPreview id={id} {...otherProps} />
             </Grid>
@@ -79,7 +83,7 @@ const Collection = ({ collection: { collectionPage, title, items } }) => {
         </Grid>
       </Grid>
     </Grid>
-  );
+  ) : null;
 };
 
 export default Collection;

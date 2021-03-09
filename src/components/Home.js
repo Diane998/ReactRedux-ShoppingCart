@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import { Grid, Typography, Button, CardMedia, Paper } from '@material-ui/core';
 import Carousel from 'react-material-ui-carousel';
-import CollectionCardContainer from '../../containers/CollectionCardContainer';
+import CollectionCardContainer from '../containers/CollectionCardContainer';
 
-const Home = ({ collections, history }) => {
+const Home = ({ collections, history, fetchCollections }) => {
   const theme = useTheme();
+  const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
   const [sliderIndex, setSliderIndex] = useState(0);
 
-  return (
+  useEffect(() => {
+    fetchCollections();
+  }, [fetchCollections]);
+
+  return collections ? (
     <Grid container justify='center' style={{ width: '100vw' }}>
       <Grid
         item
@@ -61,10 +66,12 @@ const Home = ({ collections, history }) => {
                 {c.title.toUpperCase()}
               </Typography>
               <Button
+                disableRipple
                 variant='outlined'
                 size='large'
                 style={{
                   border: '3px solid',
+                  borderRadius: 0,
                   zIndex: 3,
                   position: matchesMD ? '' : 'absolute',
                   top: matchesMD ? '' : '25%',
@@ -96,7 +103,7 @@ const Home = ({ collections, history }) => {
             color: 'black',
             background: '#ffffff82',
             boxShadow: '5px 0 0 #ffffff82',
-            margin: '1em 0 0.3em 0'
+            margin: matchesMD ? '1em 0 0.3em 0' : '0 auto'
           }}
         >
           UNASHAMED TO BE DIFFERENT
@@ -124,14 +131,14 @@ const Home = ({ collections, history }) => {
           <Grid
             item
             key={i}
-            style={{ margin: matchesMD ? '1em 0' : '1em 1em', padding: 0 }}
+            style={{ margin: matchesSM ? '1em 0.5em' : '1em 1em' }}
           >
             <CollectionCardContainer collection={c} />
           </Grid>
         ))}
       </Grid>
     </Grid>
-  );
+  ) : null;
 };
 
 export default Home;

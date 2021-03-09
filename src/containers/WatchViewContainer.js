@@ -1,20 +1,18 @@
 import { connect } from 'react-redux';
+import { fetchCollections } from '../redux/actions/shop/shopActions';
+
 import WatchView from '../components/watch/WatchView';
 
-const mapStateToProps = ({ shop: { collections } }, ownProps) => {
-  const collection = collections[ownProps.match.params.collection_id];
+const mapStateToProps = ({ shop: { collections } }, ownProps) => ({
+  watch: collections
+    ? collections[
+        ownProps.match.params.collection_id
+      ].items.filter((itemObj, i) =>
+        Object.values(itemObj).includes(ownProps.match.params.watch_id)
+          ? itemObj
+          : null
+      )
+    : null
+});
 
-  // console.log(collections);
-  const watch = collection.items.filter((itemObj, i) =>
-    Object.values(itemObj).includes(ownProps.match.params.watch_id)
-      ? itemObj
-      : null
-  );
-
-  return { watch, collection };
-  // return { rand: '12' };
-};
-
-const WatchViewContainer = connect(mapStateToProps)(WatchView);
-
-export default WatchViewContainer;
+export default connect(mapStateToProps, { fetchCollections })(WatchView);
