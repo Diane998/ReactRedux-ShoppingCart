@@ -5,19 +5,18 @@ import theme from './ui/Theme';
 // import { addCollectionAndDocuments } from '../firebase/firebase.utils';
 
 import HeaderContainer from '../containers/HeaderContainer';
-import Home from './pages/Home';
-import Shop from './pages/Shop';
+import HomeContainer from '../containers/HomeContainer';
+import ShopContainer from '../containers/ShopContainer';
 import CollectionsContainer from '../containers/CollectionsContainer';
 import CollectionContainer from '../containers/CollectionContainer';
 import WatchViewContainer from '../containers/WatchViewContainer';
-import About from './pages/About';
-import Auth from './pages/Auth';
-import Checkout from './pages/Checkout';
+import Signin from './auth/Signin';
+import Signup from './auth/Signup';
+import Cart from './Cart';
 
 class App extends Component {
   componentDidMount() {
     // addCollectionAndDocuments('collections', this.props.collections);
-    this.props.fetchCollections();
   }
 
   render() {
@@ -26,8 +25,8 @@ class App extends Component {
         <BrowserRouter>
           <HeaderContainer />
           <Switch>
-            <Route path='/' exact component={Home} />
-            <Route path='/shop' exact component={Shop} />
+            <Route path='/' exact component={HomeContainer} />
+            <Route path='/shop' exact component={ShopContainer} />
             <Route path='/collections' exact component={CollectionsContainer} />
             <Route
               path='/collections/:collection_id'
@@ -39,9 +38,9 @@ class App extends Component {
               exact
               component={WatchViewContainer}
             />
-            <Route path='/about' exact component={About} />
-            <Route path='/auth' exact component={Auth} />
-            <Route path='/checkout' exact component={Checkout} />
+            <Route path='/account/sign-in' exact component={Signin} />
+            <Route path='/account/sign-up' exact component={Signup} />
+            <Route path='/cart' exact component={Cart} />
           </Switch>
         </BrowserRouter>
       </ThemeProvider>

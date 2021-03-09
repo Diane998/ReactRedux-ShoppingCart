@@ -70,6 +70,7 @@ const Drawer = ({ tabIndex, setTabIndex, drawerOpen, setDrawerOpen }) => {
   return (
     <>
       <SwipeableDrawer
+        anchor='right'
         disableBackdropTransition={!iOS}
         disableDiscovery={iOS}
         open={drawerOpen}
