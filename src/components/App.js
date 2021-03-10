@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from './ui/Theme';
 // import { addCollectionAndDocuments } from '../firebase/firebase.utils';
+import { auth } from '../firebase/firebase.utils';
 
 import HeaderContainer from '../containers/HeaderContainer';
 import HomeContainer from '../containers/HomeContainer';
@@ -15,15 +16,25 @@ import Signup from './auth/Signup';
 import Cart from './Cart';
 
 class App extends Component {
+  state = { currentUser: null };
+  unsubscribeFromAuth = null;
+
   componentDidMount() {
     // addCollectionAndDocuments('collections', this.props.collections);
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
+      this.setState({ currentUser: user });
+    });
+  }
+
+  componentWillUnmount() {
+    this.unsubscribeFromAuth();
   }
 
   render() {
     return (
       <ThemeProvider theme={theme}>
         <BrowserRouter>
-          <HeaderContainer />
+          <HeaderContainer currentUser={this.state.currentUser} />
           <Switch>
             <Route path='/' exact component={HomeContainer} />
             <Route path='/shop' exact component={ShopContainer} />
