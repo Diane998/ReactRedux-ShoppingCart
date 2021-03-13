@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {
@@ -35,15 +35,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Shop = ({ collections, fetchCollections }) => {
+const Shop = ({ collections }) => {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
-
-  useEffect(() => {
-    fetchCollections();
-  }, [fetchCollections]);
 
   return collections ? (
     <Grid

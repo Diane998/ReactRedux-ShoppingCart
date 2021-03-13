@@ -1,33 +1,13 @@
-import {
-  SIGN_IN_SUCCESS,
-  SIGN_IN_FAILURE,
-  SIGN_OUT_SUCCESS,
-  SIGN_OUT_FAILURE,
-  SIGN_UP_FAILURE
-} from '../actions/user/userActionTypes';
+import { SET_CURRENT_USER } from '../actions/user/userActionTypes';
 
 const INITIAL_STATE = {
-  currentUser: null,
-  error: null
+  currentUser: null
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case SIGN_IN_SUCCESS:
-      return {
-        ...state,
-        currentUser: action.payload,
-        error: null
-      };
-    case SIGN_OUT_SUCCESS:
-      return { ...state, currentUser: null, error: null };
-    case SIGN_IN_FAILURE:
-    case SIGN_OUT_FAILURE:
-    case SIGN_UP_FAILURE:
-      return {
-        ...state,
-        error: action.payload
-      };
+    case SET_CURRENT_USER:
+      return { ...state, currentUser: action.payload };
     default:
       return state;
   }

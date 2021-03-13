@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme, makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography, Button, CardMedia, Paper } from '@material-ui/core';
@@ -14,15 +14,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const WatchView = ({ watch, fetchCollections }) => {
+const WatchView = ({ watch }) => {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
-
-  useEffect(() => {
-    fetchCollections();
-  }, [fetchCollections]);
 
   if (watch) {
     const {

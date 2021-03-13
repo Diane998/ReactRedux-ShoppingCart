@@ -1,19 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import { Grid, Typography, Button, CardMedia, Paper } from '@material-ui/core';
 import Carousel from 'react-material-ui-carousel';
 import CollectionCardContainer from '../containers/CollectionCardContainer';
 
-const Home = ({ collections, history, fetchCollections }) => {
+const Home = ({ collections, history }) => {
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
   const [sliderIndex, setSliderIndex] = useState(0);
-
-  useEffect(() => {
-    fetchCollections();
-  }, [fetchCollections]);
 
   return collections ? (
     <Grid container justify='center' style={{ width: '100vw' }}>

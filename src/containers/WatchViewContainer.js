@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { fetchCollections } from '../redux/actions/shop/shopActions';
 
 import WatchView from '../components/watch/WatchView';
 
@@ -15,4 +14,4 @@ const mapStateToProps = ({ shop: { collections } }, ownProps) => ({
     : null
 });
 
-export default connect(mapStateToProps, { fetchCollections })(WatchView);
+export default connect(mapStateToProps)(WatchView);

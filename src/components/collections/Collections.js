@@ -1,17 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
 import CollectionCardContainer from '../../containers/CollectionCardContainer';
 
-const Collections = ({ collections, fetchCollections }) => {
+const Collections = ({ collections }) => {
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
   const matchesLG = useMediaQuery(theme.breakpoints.down('lg'));
-
-  useEffect(() => {
-    fetchCollections();
-  }, [fetchCollections]);
 
   return collections ? (
     <Grid
