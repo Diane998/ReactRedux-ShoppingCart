@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from './ui/Theme';
 // import { addCollectionAndDocuments } from '../firebase/firebase.utils';
-import { auth } from '../firebase/firebase.utils';
+import { auth, createUserProfileDocument } from '../firebase/firebase.utils';
 
 import HeaderContainer from '../containers/HeaderContainer';
 import HomeContainer from '../containers/HomeContainer';
@@ -21,8 +21,24 @@ class App extends Component {
 
   componentDidMount() {
     // addCollectionAndDocuments('collections', this.props.collections);
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({ currentUser: user });
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+
+        userRef.onSnapshot(
+          snapshot => {
+            this.setState({
+              currentUser: {
+                id: snapshot.id,
+                ...snapshot.data()
+              }
+            });
+          },
+          () => console.log(this.state)
+        );
+      } else {
+        this.setState({ currentUser: userAuth });
+      }
     });
   }
 

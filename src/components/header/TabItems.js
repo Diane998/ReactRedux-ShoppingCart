@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { auth } from '../../firebase/firebase.utils';
 import { makeStyles } from '@material-ui/styles';
 import { routes } from './routes';
 
@@ -39,7 +40,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const TabItems = ({ tabIndex, setTabIndex }) => {
+const TabItems = ({ tabIndex, setTabIndex, currentUser }) => {
   const classes = useStyles();
 
   const handleChange = (e, i) => {
@@ -47,34 +48,42 @@ const TabItems = ({ tabIndex, setTabIndex }) => {
   };
 
   return (
-    <>
-      <Tabs
-        value={tabIndex}
-        onChange={handleChange}
-        className={classes.tabContainer}
-        indicatorColor='primary'
-      >
-        {routes.map(({ name, link }, i) =>
-          i !== 4 ? (
-            <Tab
-              disableRipple
-              key={name}
-              className={classes.tab}
-              component={Link}
-              to={link}
-              label={name}
-            />
-          ) : (
-            <Tab
-              key={name}
-              icon={<ShoppingCartOutlinedIcon />}
-              className={classes.tab}
-              onClick={e => console.log('cart icon clicked')}
-            />
-          )
-        )}
-      </Tabs>
-    </>
+    <Tabs
+      value={tabIndex}
+      onChange={handleChange}
+      className={classes.tabContainer}
+      indicatorColor='primary'
+    >
+      {routes.map(({ name, link }, i) =>
+        name === 'Cart' ? (
+          <Tab
+            disableRipple
+            key={i}
+            icon={<ShoppingCartOutlinedIcon />}
+            className={classes.tab}
+            component={Link}
+            to={link}
+          />
+        ) : currentUser && name === 'Sign In' ? (
+          <Tab
+            key={i}
+            disableRipple
+            className={classes.tab}
+            label={'Sign Out'}
+            onClick={() => auth.signOut()}
+          />
+        ) : (
+          <Tab
+            disableRipple
+            key={i}
+            className={classes.tab}
+            component={Link}
+            to={link}
+            label={name}
+          />
+        )
+      )}
+    </Tabs>
   );
 };
 

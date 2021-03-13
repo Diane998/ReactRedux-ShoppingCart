@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
+import { signInWithGoogle } from '../../firebase/firebase.utils';
+
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { Grid, Typography, TextField, Button } from '@material-ui/core';
-import { signInWithGoogle } from '../../firebase/firebase.utils';
+import {
+  Grid,
+  Typography,
+  TextField,
+  Button,
+  InputAdornment,
+  IconButton
+} from '@material-ui/core';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
 
 const useStyles = makeStyles(theme => ({
   accordionDetails: { margin: '0 1em' },
@@ -32,6 +41,14 @@ const Signin = ({ history }) => {
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
 
+  const [values, setValues] = useState({
+    showPassword: false
+  });
+
+  const onClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
+
   const [userCredentials, setUserCredentials] = useState({
     email: '',
     password: ''
@@ -46,7 +63,6 @@ const Signin = ({ history }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(email, password);
   };
 
   return (
@@ -78,14 +94,25 @@ const Signin = ({ history }) => {
           />
           <TextField
             className={classes.textField}
-            type='text'
+            type={values.showPassword ? 'text' : 'password'}
             label='Password'
             name='password'
             value={password}
             required
             onChange={handleChange}
             InputProps={{
-              className: classes.input
+              className: classes.input,
+              endAdornment: (
+                <InputAdornment position='end'>
+                  <IconButton
+                    disableRipple
+                    aria-label='toggle password visibility'
+                    onClick={onClickShowPassword}
+                  >
+                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              )
             }}
           />
           <Grid item container style={{ margin: '1em 0' }}>

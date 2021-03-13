@@ -65,7 +65,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Header = ({ setTabIndex }) => {
+const Header = ({ setTabIndex, currentUser }) => {
   const classes = useStyles();
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
@@ -88,7 +88,11 @@ const Header = ({ setTabIndex }) => {
             >
               <img alt='company logo' className={classes.logo} src={logo} />
             </Button>
-            {matchesMD ? <DrawerContainer /> : <TabItemsContainer />}
+            {matchesMD ? (
+              <DrawerContainer currentUser={currentUser} />
+            ) : (
+              <TabItemsContainer currentUser={currentUser} />
+            )}
           </Toolbar>
         </AppBar>
       </ElevationScroll>

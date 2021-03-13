@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { auth } from '../../firebase/firebase.utils';
 import { makeStyles } from '@material-ui/styles';
 import { routes } from './routes';
 
@@ -8,9 +9,13 @@ import {
   List,
   ListItem,
   ListItemText,
+  ListItemIcon,
   IconButton
 } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import {
+  Menu as MenuIcon,
+  ShoppingCartOutlined as ShoppingCartOutlinedIcon
+} from '@material-ui/icons';
 
 const useStyles = makeStyles(theme => ({
   toolbar: {
@@ -42,28 +47,77 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const renderList = (setDrawerOpen, setTabIndex, tabIndex, classes) =>
-  routes.map(({ name, link }, i) => (
-    <ListItem
-      divider
-      key={name}
-      button
-      component={Link}
-      to={link}
-      onClick={() => {
-        setDrawerOpen(false);
-        setTabIndex(i);
-      }}
-      selected={tabIndex === i}
-      classes={{ selected: classes.drawerItemSelected }}
-    >
-      <ListItemText className={classes.drawerItemText} disableTypography>
-        {name}
-      </ListItemText>
-    </ListItem>
-  ));
+const renderList = (
+  setDrawerOpen,
+  setTabIndex,
+  tabIndex,
+  classes,
+  currentUser
+) =>
+  routes.map(({ name, link }, i) =>
+    name === 'Cart' ? (
+      <ListItem
+        divider
+        key={i}
+        button
+        component={Link}
+        to={link}
+        onClick={() => {
+          setDrawerOpen(false);
+          setTabIndex(i);
+        }}
+        selected={tabIndex === i}
+        classes={{ selected: classes.drawerItemSelected }}
+      >
+        <ListItemIcon>
+          <ShoppingCartOutlinedIcon />
+        </ListItemIcon>
+      </ListItem>
+    ) : currentUser && name === 'Sign In' ? (
+      <ListItem
+        divider
+        key={i}
+        button
+        onClick={() => {
+          setDrawerOpen(false);
+          setTabIndex(i);
+          auth.signOut();
+        }}
+        selected={tabIndex === i}
+        classes={{ selected: classes.drawerItemSelected }}
+      >
+        <ListItemText className={classes.drawerItemText} disableTypography>
+          Sign Out
+        </ListItemText>
+      </ListItem>
+    ) : (
+      <ListItem
+        divider
+        key={i}
+        button
+        component={Link}
+        to={link}
+        onClick={() => {
+          setDrawerOpen(false);
+          setTabIndex(i);
+        }}
+        selected={tabIndex === i}
+        classes={{ selected: classes.drawerItemSelected }}
+      >
+        <ListItemText className={classes.drawerItemText} disableTypography>
+          {name}
+        </ListItemText>
+      </ListItem>
+    )
+  );
 
-const Drawer = ({ tabIndex, setTabIndex, drawerOpen, setDrawerOpen }) => {
+const Drawer = ({
+  tabIndex,
+  setTabIndex,
+  drawerOpen,
+  setDrawerOpen,
+  currentUser
+}) => {
   const classes = useStyles();
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
@@ -80,7 +134,13 @@ const Drawer = ({ tabIndex, setTabIndex, drawerOpen, setDrawerOpen }) => {
       >
         <div className={classes.toolbar} />
         <List disablePadding>
-          {renderList(setDrawerOpen, setTabIndex, tabIndex, classes)}
+          {renderList(
+            setDrawerOpen,
+            setTabIndex,
+            tabIndex,
+            classes,
+            currentUser
+          )}
         </List>
       </SwipeableDrawer>
       <IconButton

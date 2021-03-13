@@ -14,6 +14,32 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+// Take user auth object from auth libray and store that object in the database
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+  if (!userAuth) return;
+
+  const userRef = firestore.doc(`users/${userAuth.uid}`);
+  const snapshot = await userRef.get();
+
+  if (!snapshot.exists) {
+    const { displayName, email } = userAuth;
+    const createdAt = new Date();
+
+    try {
+      await userRef.set({
+        displayName,
+        email,
+        createdAt,
+        ...additionalData
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  return userRef;
+};
+
 // export const addCollectionAndDocuments = async (collectionKey, objsToAdd) => {
 //   const collectionRef = firestore.collection(collectionKey);
 
