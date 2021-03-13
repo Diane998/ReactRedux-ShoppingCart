@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { signInWithGoogle } from '../../firebase/firebase.utils';
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -61,8 +61,19 @@ const Signin = ({ history }) => {
     setUserCredentials({ ...userCredentials, [name]: value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+
+      this.setUserCredentials({
+        email: '',
+        password: ''
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

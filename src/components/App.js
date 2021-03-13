@@ -25,17 +25,14 @@ class App extends Component {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
-        userRef.onSnapshot(
-          snapshot => {
-            this.setState({
-              currentUser: {
-                id: snapshot.id,
-                ...snapshot.data()
-              }
-            });
-          },
-          () => console.log(this.state)
-        );
+        userRef.onSnapshot(snapshot => {
+          this.setState({
+            currentUser: {
+              id: snapshot.id,
+              ...snapshot.data()
+            }
+          });
+        });
       } else {
         this.setState({ currentUser: userAuth });
       }
