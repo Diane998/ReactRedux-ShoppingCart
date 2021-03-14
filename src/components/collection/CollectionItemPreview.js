@@ -44,60 +44,56 @@ const CollectionItemPreview = ({
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
-    <Grid item>
-      <Card
-        className={classes.root}
-        onClick={() =>
-          history.push(`${history.location.pathname}/${routeName}`)
-        }
-        style={{
-          border: 'none',
-          boxShadow: 'none',
-          maxWidth: 410,
-          height: 480
-        }}
-      >
-        <CardActionArea disableRipple>
-          <CardMedia className={classes.media} image={itemPage.imageUrl[0]} />
-          <CardContent>
-            <div className={classes.overlay}>
-              <Typography
-                gutterBottom
-                variant='h2'
-                component='h2'
-                align='left'
-                style={{
-                  position: 'absolute',
-                  top: '8em',
-                  left: '0.5em'
-                }}
-              >
-                {name}
-              </Typography>
-              <Typography
-                gutterBottom
-                variant='h4'
-                style={{
-                  position: 'absolute',
-                  top: '11em',
-                  right: '0.5em'
-                }}
-              >
-                ${price}
-              </Typography>
-            </div>
+    <Card
+      className={classes.root}
+      onClick={() => history.push(`${history.location.pathname}/${routeName}`)}
+      style={{
+        border: 'none',
+        boxShadow: 'none',
+        maxWidth: 410,
+        height: 480
+      }}
+    >
+      <CardActionArea disableRipple>
+        <CardMedia className={classes.media} image={itemPage.imageUrl[0]} />
+        <CardContent>
+          <div className={classes.overlay}>
             <Typography
-              variant='body2'
-              component='p'
+              gutterBottom
+              variant='h2'
+              component='h2'
               align='left'
-              style={{ color: 'grey', left: '0.5em', marginTop: '4em' }}
+              style={{
+                position: 'absolute',
+                top: '8em',
+                left: '0.5em'
+              }}
             >
-              {collectionName.toUpperCase()}
+              {name}
             </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-    </Grid>
+            <Typography
+              gutterBottom
+              variant='h4'
+              style={{
+                position: 'absolute',
+                top: '14em',
+                right: '0.5em'
+              }}
+            >
+              ${price}
+            </Typography>
+          </div>
+          <Typography
+            variant='body2'
+            component='p'
+            align='left'
+            style={{ color: 'grey', left: '0.5em', marginTop: '4em' }}
+          >
+            {collectionName.toUpperCase()}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
   );
 };
 

@@ -70,7 +70,13 @@ const Collection = ({ collection }) => {
             MEET THE {collection.title.toUpperCase()}
           </Typography>
         </Grid>
-        <Grid item container spacing={4} justify='center'>
+        <Grid
+          item
+          container
+          spacing={4}
+          justify='center'
+          style={{ width: '100vw' }}
+        >
           {collection.items.map(({ id, ...otherProps }) => (
             <Grid item key={id} style={{ margin: '0.5em 0' }}>
               <CollectionItemPreview id={id} {...otherProps} />

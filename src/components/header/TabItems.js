@@ -5,7 +5,8 @@ import { makeStyles } from '@material-ui/styles';
 import { routes } from './routes';
 
 import { Tabs, Tab } from '@material-ui/core';
-import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+import CartContainer from '../../containers/CartContainer';
+import CartDropdownContainer from '../../containers/CartDropdownContainer';
 
 const useStyles = makeStyles(theme => ({
   tabContainer: { marginLeft: 'auto', marginRight: '2em' },
@@ -40,7 +41,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const TabItems = ({ tabIndex, setTabIndex, currentUser }) => {
+const TabItems = ({ tabIndex, setTabIndex, currentUser, hidden }) => {
   const classes = useStyles();
 
   const handleChange = (e, i) => {
@@ -59,10 +60,8 @@ const TabItems = ({ tabIndex, setTabIndex, currentUser }) => {
           <Tab
             disableRipple
             key={i}
-            icon={<ShoppingCartOutlinedIcon />}
+            icon={<CartContainer />}
             className={classes.tab}
-            component={Link}
-            to={link}
           />
         ) : currentUser && name === 'Sign In' ? (
           <Tab
@@ -83,6 +82,7 @@ const TabItems = ({ tabIndex, setTabIndex, currentUser }) => {
           />
         )
       )}
+      {hidden ? null : <CartDropdownContainer />}
     </Tabs>
   );
 };
