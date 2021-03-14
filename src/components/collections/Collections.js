@@ -6,6 +6,7 @@ import CollectionCardContainer from '../../containers/CollectionCardContainer';
 
 const Collections = ({ collections }) => {
   const theme = useTheme();
+  const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
   const matchesLG = useMediaQuery(theme.breakpoints.down('lg'));
 
@@ -46,7 +47,7 @@ const Collections = ({ collections }) => {
         item
         container
         justify='center'
-        spacing={3}
+        spacing={matchesSM ? 2 : 4}
         style={{ margin: '0 auto', padding: 0 }}
       >
         {collections.map((collection, i) => (

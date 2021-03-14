@@ -73,7 +73,7 @@ const Collection = ({ collection }) => {
         <Grid
           item
           container
-          spacing={4}
+          spacing={matchesSM ? 2 : 4}
           justify='center'
           style={{ width: '100vw' }}
         >
