@@ -28,7 +28,13 @@ const ItemCount = styled.span`
 const Cart = ({ cartItems, toggleCartHidden }) => (
   <CartIcon onClick={toggleCartHidden}>
     <ShoppingIcon className='shopping-icon' />
-    <ItemCount className='item-count'>0</ItemCount>
+    <ItemCount className='item-count'>
+      {cartItems.reduce(
+        (accumulatedQuantity, cartItem) =>
+          accumulatedQuantity + cartItem.quantity,
+        0
+      )}
+    </ItemCount>
   </CartIcon>
 );
 

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { auth } from '../../firebase/firebase.utils';
 import { makeStyles } from '@material-ui/styles';
 import { routes } from './routes';
 
-import { Tabs, Tab } from '@material-ui/core';
+import { Tabs, Tab, Popper, Grow } from '@material-ui/core';
 import CartContainer from '../../containers/CartContainer';
 import CartDropdownContainer from '../../containers/CartDropdownContainer';
 
@@ -43,47 +43,61 @@ const useStyles = makeStyles(theme => ({
 
 const TabItems = ({ tabIndex, setTabIndex, currentUser, hidden }) => {
   const classes = useStyles();
+  const anchorRef = useRef(null);
 
   const handleChange = (e, i) => {
     setTabIndex(i);
   };
 
   return (
-    <Tabs
-      value={tabIndex}
-      onChange={handleChange}
-      className={classes.tabContainer}
-      indicatorColor='primary'
-    >
-      {routes.map(({ name, link }, i) =>
-        name === 'Cart' ? (
-          <Tab
-            disableRipple
-            key={i}
-            icon={<CartContainer />}
-            className={classes.tab}
-          />
-        ) : currentUser && name === 'Sign In' ? (
-          <Tab
-            key={i}
-            disableRipple
-            className={classes.tab}
-            label={'Sign Out'}
-            onClick={() => auth.signOut()}
-          />
-        ) : (
-          <Tab
-            disableRipple
-            key={i}
-            className={classes.tab}
-            component={Link}
-            to={link}
-            label={name}
-          />
-        )
-      )}
-      {hidden ? null : <CartDropdownContainer />}
-    </Tabs>
+    <>
+      <Tabs
+        value={tabIndex}
+        onChange={handleChange}
+        className={classes.tabContainer}
+        indicatorColor='primary'
+      >
+        {routes.map(({ name, link }, i) =>
+          name === 'Cart' ? (
+            <Tab
+              ref={anchorRef}
+              disableRipple
+              key={i}
+              icon={<CartContainer />}
+              className={classes.tab}
+            />
+          ) : currentUser && name === 'Sign In' ? (
+            <Tab
+              key={i}
+              disableRipple
+              className={classes.tab}
+              label={'Sign Out'}
+              onClick={() => auth.signOut()}
+            />
+          ) : (
+            <Tab
+              disableRipple
+              key={i}
+              className={classes.tab}
+              component={Link}
+              to={link}
+              label={name}
+            />
+          )
+        )}
+      </Tabs>
+      <Popper
+        open={!hidden}
+        anchorEl={anchorRef.current}
+        transition
+        disablePortal
+        style={{ marginRight: '3.5em' }}
+      >
+        <Grow>
+          <CartDropdownContainer />
+        </Grow>
+      </Popper>
+    </>
   );
 };
 

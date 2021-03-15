@@ -25,16 +25,25 @@ const Name = styled.span`
   font-size: 16px;
 `;
 
-const CartItem = ({ item: { imageUrl, price, name, quantity } }) => (
-  <CartItemContainer>
-    <Image src={imageUrl} alt={name} />
-    <ItemDetails>
-      <Name>{name}</Name>
-      <span className='price'>
-        {quantity} x ${price}
-      </span>
-    </ItemDetails>
-  </CartItemContainer>
-);
+const CartItem = ({ item }) => {
+  const {
+    itemPage: { imageUrl },
+    price,
+    name,
+    quantity
+  } = item;
+
+  return (
+    <CartItemContainer>
+      <Image src={imageUrl} alt={name} />
+      <ItemDetails>
+        <Name>{name}</Name>
+        <span className='price'>
+          {quantity} x ${price}
+        </span>
+      </ItemDetails>
+    </CartItemContainer>
+  );
+};
 
 export default memo(CartItem);

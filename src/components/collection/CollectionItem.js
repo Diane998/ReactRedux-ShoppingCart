@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { makeStyles } from '@material-ui/core/styles';
 import {
   Card,
   CardActionArea,
@@ -40,10 +39,8 @@ const useStyles = makeStyles(theme => ({
 
 const CollectionItem = ({ item, history, collectionRouteName, addItem }) => {
   const classes = useStyles();
-  const theme = useTheme();
-  const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
 
-  const { collectionName, id, itemPage, name, price, routeName } = item;
+  const { collectionName, itemPage, name, price, routeName } = item;
 
   return (
     <Card
