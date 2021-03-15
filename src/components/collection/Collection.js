@@ -2,7 +2,7 @@ import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import { Grid, Typography, CardMedia } from '@material-ui/core';
-import CollectionItemPreview from './CollectionItemPreview';
+import CollectionItemContainer from '../../containers/CollectionItemContainer';
 
 const Collection = ({ collection }) => {
   const theme = useTheme();
@@ -77,9 +77,9 @@ const Collection = ({ collection }) => {
           justify='center'
           style={{ width: '100vw' }}
         >
-          {collection.items.map(({ id, ...otherProps }) => (
-            <Grid item key={id} style={{ margin: '0.5em 0' }}>
-              <CollectionItemPreview id={id} {...otherProps} />
+          {collection.items.map((item, i) => (
+            <Grid item key={i} style={{ margin: '0.5em 0' }}>
+              <CollectionItemContainer item={item} />
             </Grid>
           ))}
         </Grid>

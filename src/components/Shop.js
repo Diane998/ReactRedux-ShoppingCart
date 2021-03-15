@@ -12,7 +12,7 @@ import {
   InputAdornment
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import CollectionItemPreview from './collection/CollectionItemPreview';
+import CollectionItemContainer from '../containers/CollectionItemContainer';
 
 const useStyles = makeStyles(theme => ({
   accordionDetails: { margin: '0 1em' },
@@ -134,9 +134,12 @@ const Shop = ({ collections }) => {
         }}
       >
         {collections.map((col, i) =>
-          col.items.map(({ id, ...otherProps }) => (
-            <Grid item key={id} style={{ margin: '0.5em 0' }}>
-              <CollectionItemPreview id={id} {...otherProps} />
+          col.items.map((item, i) => (
+            <Grid item key={i} style={{ margin: '0.5em 0' }}>
+              <CollectionItemContainer
+                item={item}
+                collectionRouteName={col.routeName}
+              />
             </Grid>
           ))
         )}

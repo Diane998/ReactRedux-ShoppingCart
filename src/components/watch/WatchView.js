@@ -2,7 +2,7 @@ import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme, makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography, Button, CardMedia, Paper } from '@material-ui/core';
-import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+import { ReactComponent as Icon } from '../../assets/shopping-bag.svg';
 import ImageCarousel from './ImageCarousel';
 
 const useStyles = makeStyles(theme => ({
@@ -65,7 +65,7 @@ const WatchView = ({ watch }) => {
               variant='outlined'
               size='large'
               className={classes.button}
-              startIcon={<ShoppingCartOutlinedIcon />}
+              startIcon={<Icon style={{ height: 24, width: 24 }} />}
             >
               ADD TO CART
             </Button>
