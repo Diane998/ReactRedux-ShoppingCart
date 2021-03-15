@@ -14,19 +14,19 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const WatchView = ({ watch }) => {
+const WatchView = ({ item, addItem }) => {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
 
-  if (watch) {
+  if (item) {
     const {
       collectionName,
       name,
       price,
       itemPage: { description, imageUrl, specs }
-    } = watch[0];
+    } = item[0];
 
     return (
       <Grid container justify='center'>
@@ -66,6 +66,7 @@ const WatchView = ({ watch }) => {
               size='large'
               className={classes.button}
               startIcon={<Icon style={{ height: 24, width: 24 }} />}
+              onClick={() => addItem(item[0])}
             >
               ADD TO CART
             </Button>

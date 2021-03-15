@@ -60,9 +60,9 @@ const TabItems = ({ tabIndex, setTabIndex, currentUser, hidden }) => {
         {routes.map(({ name, link }, i) =>
           name === 'Cart' ? (
             <Tab
+              key={i}
               ref={anchorRef}
               disableRipple
-              key={i}
               icon={<CartContainer />}
               className={classes.tab}
             />
@@ -87,11 +87,11 @@ const TabItems = ({ tabIndex, setTabIndex, currentUser, hidden }) => {
         )}
       </Tabs>
       <Popper
+        style={{ marginRight: '2em' }}
         open={!hidden}
         anchorEl={anchorRef.current}
         transition
         disablePortal
-        style={{ marginRight: '3.5em' }}
       >
         <Grow>
           <CartDropdownContainer />

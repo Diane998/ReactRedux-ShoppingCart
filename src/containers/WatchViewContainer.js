@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
+import { addItem } from '../redux/actions/cart/cartActions';
 
 import WatchView from '../components/watch/WatchView';
 
 const mapStateToProps = ({ shop: { collections } }, ownProps) => ({
-  watch: collections
+  item: collections
     ? collections[
         ownProps.match.params.collection_id
       ].items.filter((itemObj, i) =>
@@ -14,4 +15,4 @@ const mapStateToProps = ({ shop: { collections } }, ownProps) => ({
     : null
 });
 
-export default connect(mapStateToProps)(WatchView);
+export default connect(mapStateToProps, { addItem })(WatchView);

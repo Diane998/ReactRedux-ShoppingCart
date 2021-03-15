@@ -5,7 +5,7 @@ import { toggleCartHidden } from '../redux/actions/cart/cartActions';
 
 import CartDropdown from '../components/cart/CartDropdown';
 
-const mapStateToProps = ({ cart: { cartItems } }) => ({
+const mapStateToProps = ({ cart: { cartItems, hidden } }) => ({
   cartItems
 });
 
