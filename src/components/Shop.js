@@ -77,7 +77,7 @@ const Shop = ({ collections }) => {
             </AccordionSummary>
             {collections.map((collection, i) => (
               <AccordionDetails key={i} className={classes.accordionDetails}>
-                <Typography variant='body2' style={{ lineHeight: '10px' }}>
+                <Typography variant='body2'>
                   {collection.title} ({collection.items.length})
                 </Typography>
               </AccordionDetails>
@@ -103,7 +103,7 @@ const Shop = ({ collections }) => {
                   InputProps={{
                     className: classes.input,
                     startAdornment: (
-                      <InputAdornment position='start'>€</InputAdornment>
+                      <InputAdornment position='start'>$</InputAdornment>
                     )
                   }}
                 />
@@ -113,7 +113,7 @@ const Shop = ({ collections }) => {
                   InputProps={{
                     className: classes.input,
                     startAdornment: (
-                      <InputAdornment position='start'>€</InputAdornment>
+                      <InputAdornment position='start'>$</InputAdornment>
                     )
                   }}
                 />

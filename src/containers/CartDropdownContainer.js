@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { toggleCartHidden } from '../redux/actions/cart/cartActions';
+import { toggleCartHidden } from '../redux/cart/cartActions';
 
 import CartDropdown from '../components/cart/CartDropdown';
 

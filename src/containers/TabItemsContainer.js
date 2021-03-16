@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { setTabIndex } from '../redux/actions/tabs/tabsActions';
+import { setTabIndex } from '../redux/tabs/tabsActions';
 import TabItems from '../components/header/TabItems';
 
 const mapStateToProps = ({ tabs: { tabIndex }, cart: { hidden } }) => ({

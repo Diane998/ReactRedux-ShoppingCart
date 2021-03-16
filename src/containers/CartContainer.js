@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { toggleCartHidden } from '../redux/actions/cart/cartActions';
+import { toggleCartHidden } from '../redux/cart/cartActions';
 import Cart from '../components/cart/Cart';
 
 const mapStateToProps = ({ cart: { cartItems } }) => ({

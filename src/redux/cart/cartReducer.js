@@ -5,25 +5,10 @@ import {
   REMOVE_ITEM,
   CLEAR_CART,
   SET_CART_FROM_FIREBASE
-} from '../actions/cart/cartActionTypes';
+} from './cartActionTypes';
+import { addItemToCart, removeItemFromCart } from './cartUtils';
 
 const INITIAL_STATE = { hidden: true, cartItems: [] };
-
-export const addItemToCart = (cartItems, cartItemToAdd) => {
-  const existingCartItem = cartItems.find(
-    cartItem => cartItem.id === cartItemToAdd.id
-  );
-
-  if (existingCartItem) {
-    return cartItems.map(cartItem =>
-      cartItem.id === cartItemToAdd.id
-        ? { ...cartItem, quantity: cartItem.quantity + 1 }
-        : cartItem
-    );
-  }
-
-  return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
-};
 
 const cartReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {

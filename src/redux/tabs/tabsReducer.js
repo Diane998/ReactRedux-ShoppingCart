@@ -1,7 +1,4 @@
-import {
-  SET_TAB_INDEX,
-  SET_DRAWER_OPEN
-} from '../actions/tabs/tabsActionTypes';
+import { SET_TAB_INDEX, SET_DRAWER_OPEN } from './tabsActionTypes';
 
 const INITIAL_STATE = {
   tabIndex: 0,
