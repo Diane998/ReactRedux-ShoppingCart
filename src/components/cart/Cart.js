@@ -1,41 +1,47 @@
 import React from 'react';
-import styled from 'styled-components';
+import { makeStyles } from '@material-ui/styles';
+import { Grid, Typography } from '@material-ui/core';
+import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg';
 
-import { ReactComponent as Icon } from '../../assets/shopping-bag.svg';
+const useStyles = makeStyles(theme => ({
+  container: {
+    width: 45,
+    height: 45,
+    position: 'relative',
+    cursor: 'pointer'
+  },
+  cartIcon: {
+    width: 24,
+    height: 24
+  },
+  itemCount: {
+    position: 'absolute',
+    fontSize: 10,
+    fontWeight: 'bold',
+    bottom: 15,
+    left: 20,
+    color: 'black'
+  }
+}));
 
-const CartIcon = styled.div`
-  width: 45px;
-  height: 45px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-`;
+const Cart = ({ itemCount, toggleCartHidden }) => {
+  const classes = useStyles();
 
-const ShoppingIcon = styled(Icon)`
-  width: 24px;
-  height: 24px;
-`;
-
-const ItemCount = styled.span`
-  position: absolute;
-  font-size: 10px;
-  font-weight: bold;
-  bottom: 12px;
-`;
-
-const Cart = ({ cartItems, toggleCartHidden }) => (
-  <CartIcon onClick={toggleCartHidden}>
-    <ShoppingIcon className='shopping-icon' />
-    <ItemCount className='item-count'>
-      {cartItems.reduce(
-        (accumulatedQuantity, cartItem) =>
-          accumulatedQuantity + cartItem.quantity,
-        0
-      )}
-    </ItemCount>
-  </CartIcon>
-);
-
+  return (
+    <Grid
+      container
+      className={classes.container}
+      alignItems='center'
+      justify='center'
+      onClick={toggleCartHidden}
+    >
+      <Grid item>
+        <ShoppingIcon className={classes.cartIcon} />
+      </Grid>
+      <Grid item>
+        <Typography className={classes.itemCount}>{itemCount}</Typography>
+      </Grid>
+    </Grid>
+  );
+};
 export default Cart;
