@@ -45,7 +45,6 @@ const Shop = ({ collections }) => {
     <Grid
       container
       direction={matchesMD ? 'column' : 'row'}
-      justify='center'
       spacing={3}
       style={{
         width: matchesMD ? '100vw' : '85vw',
@@ -126,16 +125,13 @@ const Shop = ({ collections }) => {
       <Grid
         item
         container
-        spacing={3}
         justify='center'
-        style={{
-          width: matchesMD ? '100%' : '80%',
-          height: '100%'
-        }}
+        spacing={matchesSM ? 0 : 4}
+        style={{ width: matchesMD ? '100%' : '80%', margin: 0, padding: 0 }}
       >
         {collections.map((col, i) =>
           col.items.map((item, i) => (
-            <Grid item key={i} style={{ margin: '0.5em 0' }}>
+            <Grid item key={i} style={{ margin: matchesSM ? '1em 0' : 0 }}>
               <CollectionItemContainer
                 item={item}
                 collectionRouteName={col.routeName}

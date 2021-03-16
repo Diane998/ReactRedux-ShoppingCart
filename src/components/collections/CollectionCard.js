@@ -18,6 +18,7 @@ const CollectionCard = ({
     className={classes.root}
     style={{
       border: 'none',
+      borderRadius: 0,
       boxShadow: 'none',
       width: matchesMD ? '100vw' : 345
     }}

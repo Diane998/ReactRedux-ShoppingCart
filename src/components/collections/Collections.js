@@ -15,7 +15,7 @@ const Collections = ({ collections }) => {
       container
       spacing={3}
       style={{
-        width: matchesMD ? '95vw' : matchesLG ? '95vw' : '80vw',
+        width: matchesLG ? '100vw' : '80vw',
         margin: '0 auto'
       }}
     >
@@ -47,11 +47,11 @@ const Collections = ({ collections }) => {
         item
         container
         justify='center'
-        spacing={matchesSM ? 2 : 4}
-        style={{ margin: '0 auto', padding: 0 }}
+        spacing={matchesSM ? 0 : 4}
+        style={{ margin: 0, padding: 0 }}
       >
         {collections.map((collection, i) => (
-          <Grid item key={i}>
+          <Grid item key={i} style={{ margin: matchesSM ? '1em 0' : 0 }}>
             <CollectionCardContainer collection={collection} />
           </Grid>
         ))}

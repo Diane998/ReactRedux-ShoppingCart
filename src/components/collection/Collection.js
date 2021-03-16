@@ -1,10 +1,19 @@
 import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography, CardMedia } from '@material-ui/core';
 import CollectionItemContainer from '../../containers/CollectionItemContainer';
 
+const useStyles = makeStyles(theme => ({
+  preview: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  }
+}));
+
 const Collection = ({ collection }) => {
+  const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
@@ -70,19 +79,36 @@ const Collection = ({ collection }) => {
             MEET THE {collection.title.toUpperCase()}
           </Typography>
         </Grid>
-        <Grid
-          item
-          container
-          spacing={matchesSM ? 2 : 4}
-          justify='center'
-          style={{ width: '100vw' }}
-        >
-          {collection.items.map((item, i) => (
-            <Grid item key={i} style={{ margin: '0.5em 0' }}>
-              <CollectionItemContainer item={item} />
-            </Grid>
-          ))}
-        </Grid>
+        {matchesSM ? (
+          <div
+            className={classes.preview}
+            style={{
+              width: '100vw',
+              overflowX: matchesMD ? 'scroll' : 'hidden',
+              margin: '2em 0'
+            }}
+          >
+            {collection.items.map((item, i) => (
+              <div key={i} style={{ margin: '1em' }}>
+                <CollectionItemContainer item={item} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <Grid
+            item
+            container
+            spacing={matchesSM ? 0 : 4}
+            justify='center'
+            style={{ width: '100vw' }}
+          >
+            {collection.items.map((item, i) => (
+              <Grid item key={i} style={{ margin: '0.5em 0' }}>
+                <CollectionItemContainer item={item} />
+              </Grid>
+            ))}
+          </Grid>
+        )}
       </Grid>
     </Grid>
   ) : null;

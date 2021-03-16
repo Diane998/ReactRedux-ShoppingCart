@@ -6,15 +6,15 @@ import CollectionCard from '../components/collections/CollectionCard';
 
 const useStyles = {
   root: {
-    maxWidth: 345,
+    maxWidth: 400,
     position: 'relative'
   },
   media: {
-    height: 250
+    height: 280
   },
   overlay: {
     position: 'absolute',
-    height: '250px',
+    height: 280,
     width: '100%',
     top: 0,
     left: 0,

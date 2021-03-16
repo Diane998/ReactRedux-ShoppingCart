@@ -1,5 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Card,
@@ -13,45 +15,36 @@ import {
 import { ReactComponent as Icon } from '../../assets/shopping-bag.svg';
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    border: 'none',
+    boxShadow: 'none'
+  },
   media: {
-    position: 'relative',
-    width: 350,
-    height: 380,
-    zIndex: 2
+    height: 440,
+    zIndex: 2,
+    position: 'relative'
   },
   overlay: {
     position: 'absolute',
-    height: '190px',
+    height: 210,
     width: '100%',
-    top: 150,
+    top: 190,
     left: 0,
     zIndex: 1,
     background: 'rgba(0, 0, 0, 0.1)',
     padding: '3em 0'
-  },
-  button: {
-    margin: '1em 0',
-    padding: '0.4em 1.5em',
-    borderRadius: 0,
-    fontSize: '1.1em'
   }
 }));
 
 const CollectionItem = ({ item, history, collectionRouteName, addItem }) => {
   const classes = useStyles();
+  const theme = useTheme();
+  const matchesXS = useMediaQuery(theme.breakpoints.down('xs'));
 
   const { collectionName, itemPage, name, price, routeName } = item;
 
   return (
-    <Card
-      className={classes.root}
-      style={{
-        border: 'none',
-        boxShadow: 'none',
-        maxWidth: 410,
-        height: 480
-      }}
-    >
+    <Card className={classes.root} style={{ width: matchesXS ? '100vw' : 410 }}>
       <CardActionArea disableRipple>
         <CardMedia
           onClick={() =>
