@@ -17,7 +17,7 @@ export const selectCartItemsCount = createSelector(
     )
 );
 
-export const selectCartVisibility = createSelector(
+export const selectCartHidden = createSelector(
   [selectCart],
   cart => cart.hidden
 );
