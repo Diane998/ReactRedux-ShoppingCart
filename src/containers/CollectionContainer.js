@@ -1,11 +1,9 @@
 import { connect } from 'react-redux';
-
+import { selectCollection } from '../redux/shop/shopSelectors';
 import Collection from '../components/collection/Collection';
 
-const mapStateToProps = ({ shop: { collections } }, ownProps) => ({
-  collection: collections
-    ? collections[ownProps.match.params.collection_id]
-    : null
+const mapStateToProps = (state, ownProps) => ({
+  collection: selectCollection(ownProps.match.params.collection_id)(state)
 });
 
 export default connect(mapStateToProps)(Collection);

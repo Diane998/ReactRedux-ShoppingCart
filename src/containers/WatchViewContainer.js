@@ -1,18 +1,14 @@
 import { connect } from 'react-redux';
+import { selectItem } from '../redux/shop/shopSelectors';
 import { addItem } from '../redux/cart/cartActions';
 
 import WatchView from '../components/watch/WatchView';
 
-const mapStateToProps = ({ shop: { collections } }, ownProps) => ({
-  item: collections
-    ? collections[
-        ownProps.match.params.collection_id
-      ].items.filter((itemObj, i) =>
-        Object.values(itemObj).includes(ownProps.match.params.watch_id)
-          ? itemObj
-          : null
-      )
-    : null
+const mapStateToProps = (state, ownProps) => ({
+  item: selectItem(
+    ownProps.match.params.collection_id,
+    ownProps.match.params.watch_id
+  )(state)
 });
 
 export default connect(mapStateToProps, { addItem })(WatchView);

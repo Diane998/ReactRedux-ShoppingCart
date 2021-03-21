@@ -1,11 +1,10 @@
 import { connect } from 'react-redux';
-
+import { createStructuredSelector } from 'reselect';
+import { selectCollectionsForPreview } from '../redux/shop/shopSelectors';
 import Home from '../components/Home';
 
-const mapStateToProps = ({ shop: { collections } }) => ({
-  collections: collections
-    ? Object.keys(collections).map(key => collections[key])
-    : null
+const mapStateToProps = createStructuredSelector({
+  collections: selectCollectionsForPreview
 });
 
 export default connect(mapStateToProps)(Home);
