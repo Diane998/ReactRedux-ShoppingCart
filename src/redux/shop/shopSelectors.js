@@ -18,9 +18,11 @@ export const selectCollection = collectionId =>
     collections ? collections[collectionId] : null
   );
 
-export const selectItem = (collection_id, watch_id) =>
-  createSelector([selectCollection(collection_id)], collection =>
-    collection.items.filter((itemObj, i) =>
-      Object.values(itemObj).includes(watch_id) ? itemObj : null
-    )
+export const selectItem = (collectionId, watchId) =>
+  createSelector([selectShopCollections], collections =>
+    collections
+      ? collections[collectionId].items.filter((itemObj, i) =>
+          Object.values(itemObj).includes(watchId) ? itemObj : null
+        )
+      : null
   );
