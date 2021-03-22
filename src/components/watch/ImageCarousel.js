@@ -45,11 +45,10 @@ const ImageCarousel = ({ imageUrl }) => {
 
   return (
     <Carousel
-      animation={'fade'}
       indicators={false}
       navButtonsAlwaysVisible={matchesMD ? true : false}
       autoPlay={false}
-      timeout={0}
+      timeout={500}
     >
       {imageUrl.map((img, i) => (
         <Paper

@@ -24,12 +24,12 @@ const Home = ({ collections, history }) => {
         <Grid item style={{ padding: 0 }}>
           <Carousel
             onChange={i => setSliderIndex(i)}
-            animation={'fade'}
+            animation={'slide'}
             indicatorProps={true}
             navButtonsAlwaysInvisible={true}
             autoPlay={true}
-            interval={5000}
-            timeout={200}
+            timeout={2500}
+            interval={7000}
           >
             {collections.map((c, i) => (
               <Paper key={i}>

@@ -41,7 +41,7 @@ const WatchView = ({ item, addItem }) => {
           }}
         >
           <Grid item>
-            <ImageCarousel imageUrl={imageUrl} />
+            <ImageCarousel imageUrl={imageUrl} autoPlay={true} />
           </Grid>
           <Grid
             item
