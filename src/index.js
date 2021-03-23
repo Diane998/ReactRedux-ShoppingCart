@@ -9,9 +9,9 @@ import AppContainer from './containers/AppContainer';
 
 ReactDOM.render(
   <Provider store={store}>
-    {/* <PersistGate persistor={persistor}> */}
-    <AppContainer />
-    {/* </PersistGate> */}
+    <PersistGate persistor={persistor}>
+      <AppContainer />
+    </PersistGate>
   </Provider>,
   document.querySelector('#root')
 );
