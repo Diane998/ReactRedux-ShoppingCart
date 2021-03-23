@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
   },
   toolbar: {
     ...theme.mixins.toolbar,
-    marginBottom: '3em',
+    marginBottom: '2em',
     [theme.breakpoints.down('md')]: {
       marginBottom: '4em'
     },
