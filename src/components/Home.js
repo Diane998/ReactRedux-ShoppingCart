@@ -1,15 +1,80 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
-import { Grid, Typography, Button, CardMedia, Paper } from '@material-ui/core';
+import { useTheme, makeStyles } from '@material-ui/core/styles';
+import { Grid, Typography, Button, CardMedia } from '@material-ui/core';
 import Carousel from 'react-material-ui-carousel';
 import CollectionCardContainer from '../containers/CollectionCardContainer';
+
+const useStyles = makeStyles(theme => ({
+  button: {
+    ...theme.button,
+    fontSize: '1.1em',
+    '&:hover': {
+      backgroundColor: theme.palette.common.crimson
+    }
+  }
+}));
+
+const Banner = ({ collection, history }) => {
+  const classes = useStyles();
+  const theme = useTheme();
+  const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
+  const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
+
+  return (
+    <CardMedia
+      style={{
+        width: '100vw'
+      }}
+      image={collection.collectionPage.imageUrl}
+      title={collection.Name}
+    >
+      <Grid
+        item
+        container
+        direction='column'
+        alignItems='flex-end'
+        justify={matchesSM ? 'flex-end' : 'center'}
+        style={{ width: '100vw', height: matchesSM ? '50vh' : '90vh' }}
+      >
+        <div
+          style={{
+            padding: matchesSM ? '1em' : '2em',
+            backgroundColor: 'rgba(0,0,0,0.5)'
+          }}
+        >
+          <Grid item>
+            <Typography
+              variant={matchesMD ? 'h3' : 'h1'}
+              style={{ color: 'white' }}
+            >
+              {collection.title.toUpperCase()}
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Button
+              className={classes.button}
+              variant='outlined'
+              color='primary'
+              onClick={() =>
+                history.push(
+                  `${history.location.pathname}collections/${collection.routeName}`
+                )
+              }
+            >
+              DISCOVER THE COLLECTION
+            </Button>
+          </Grid>
+        </div>
+      </Grid>
+    </CardMedia>
+  );
+};
 
 const Home = ({ collections, history }) => {
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
-  const [sliderIndex, setSliderIndex] = useState(0);
 
   return collections ? (
     <Grid container justify='center' style={{ width: '100vw' }}>
@@ -23,67 +88,18 @@ const Home = ({ collections, history }) => {
       >
         <Grid item style={{ padding: 0 }}>
           <Carousel
-            onChange={i => setSliderIndex(i)}
-            animation={'slide'}
-            indicatorProps={true}
-            navButtonsAlwaysInvisible={true}
             autoPlay={true}
-            timeout={2500}
-            interval={7000}
+            animation={'fade'}
+            indicators={true}
+            timeout={1000}
+            interval={5000}
+            navButtonsAlwaysVisible={false}
           >
             {collections.map((c, i) => (
-              <Paper key={i}>
-                <CardMedia
-                  style={{
-                    width: matchesMD ? '100vw' : '80vw',
-                    height: matchesMD ? '30vh' : '80vh',
-                    position: 'relative'
-                  }}
-                  image={c.collectionPage.imageUrl}
-                />
-              </Paper>
+              <Banner collection={c} key={i} history={history} />
             ))}
           </Carousel>
         </Grid>
-        {collections.map((c, i) =>
-          i === sliderIndex ? (
-            <Grid key={i} item style={{ padding: 0 }}>
-              <Typography
-                variant={matchesMD ? 'h3' : 'h1'}
-                style={{
-                  background: '#ffffff82',
-                  boxShadow: '5px 0 0 #ffffff82',
-                  margin: '1em 0 0.3em 0',
-                  position: matchesMD ? '' : 'absolute',
-                  top: matchesMD ? '' : '10%',
-                  right: matchesMD ? '' : '15%'
-                }}
-              >
-                {c.title.toUpperCase()}
-              </Typography>
-              <Button
-                disableRipple
-                variant='outlined'
-                size='large'
-                style={{
-                  border: '3px solid',
-                  borderRadius: 0,
-                  zIndex: 3,
-                  position: matchesMD ? '' : 'absolute',
-                  top: matchesMD ? '' : '25%',
-                  right: matchesMD ? '' : '5%'
-                }}
-                onClick={() =>
-                  history.push(
-                    `${history.location.pathname}collections/${c.routeName}`
-                  )
-                }
-              >
-                DISCOVER THE COLLECTION
-              </Button>
-            </Grid>
-          ) : null
-        )}
       </Grid>
       <Grid
         item
