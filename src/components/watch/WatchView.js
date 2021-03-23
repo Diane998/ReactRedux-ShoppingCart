@@ -7,10 +7,14 @@ import ImageCarousel from './ImageCarousel';
 
 const useStyles = makeStyles(theme => ({
   button: {
+    ...theme.button,
     margin: '1em 0',
-    padding: '0.4em 1.5em',
-    borderRadius: 0,
-    fontSize: '1.1em'
+    fontSize: '1.1em',
+    '&:hover': {
+      backgroundColor: theme.palette.common.crimson,
+      color: 'white',
+      border: 'none'
+    }
   }
 }));
 
@@ -41,7 +45,7 @@ const WatchView = ({ item, addItem }) => {
           }}
         >
           <Grid item>
-            <ImageCarousel imageUrl={imageUrl} autoPlay={true} />
+            <ImageCarousel imageUrl={imageUrl} />
           </Grid>
           <Grid
             item

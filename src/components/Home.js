@@ -35,7 +35,7 @@ const Banner = ({ collection, history }) => {
         direction='column'
         alignItems='flex-end'
         justify={matchesSM ? 'flex-end' : 'center'}
-        style={{ width: '100vw', height: matchesSM ? '50vh' : '90vh' }}
+        style={{ width: '100vw', height: matchesSM ? '50vh' : '85vh' }}
       >
         <div
           style={{

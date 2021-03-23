@@ -1,18 +1,36 @@
 import { createMuiTheme } from '@material-ui/core/styles';
+import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
+
+const customBreakpointValues = {
+  values: {
+    xs: 0,
+    sm: 576,
+    md: 768,
+    lg: 992,
+    xl: 1200
+  }
+};
+
+const breakpoints = createBreakpoints({ ...customBreakpointValues });
 
 const white = '#ffff',
   arcBlue = '#0B72B9',
   arcOrange = '#FFBA60',
   arcGrey = '#868686',
-  black = 'black';
+  black = 'black',
+  crimson = '#c40d2e';
 
 export default createMuiTheme({
+  breakpoints: {
+    ...customBreakpointValues
+  },
   palette: {
     common: {
       blue: arcBlue,
       orange: arcOrange,
       grey: arcGrey,
-      black: 'black'
+      crimson: crimson,
+      black: black
     },
     primary: {
       main: white
@@ -73,6 +91,14 @@ export default createMuiTheme({
       fontSize: '1em',
       fontWeight: 300,
       color: arcGrey
+    }
+  },
+  button: {
+    borderRadius: 0,
+    padding: '0.8em 5em',
+    [breakpoints.down('sm')]: {
+      padding: '1em 1.8em',
+      width: '85vw'
     }
   },
   overrides: {

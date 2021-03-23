@@ -19,10 +19,12 @@ const useStyles = makeStyles(theme => ({
     overflowY: 'auto'
   },
   button: {
-    marginTop: '1em',
-    padding: '0.4em 1.5em',
-    borderRadius: 0,
-    fontSize: '1.1em'
+    // marginTop: '1em',
+    // padding: '0.4em 1.5em',
+    // borderRadius: 0,
+    // fontSize: '1.1em'
+    ...theme.button,
+    fontSize: '1em'
   }
 }));
 

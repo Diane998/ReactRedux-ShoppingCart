@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
   input: {
     color: 'black'
   },
-  button: {}
+  button: { ...theme.button, margin: '1em 0' }
 }));
 
 const Signin = ({ history }) => {
@@ -129,13 +129,13 @@ const Signin = ({ history }) => {
           <Grid item container style={{ margin: '1em 0' }}>
             <Grid item>
               <Button
+                className={classes.button}
                 type='submit'
                 variant='outlined'
                 color='secondary'
                 disableRipple
                 disableElevation
                 style={{
-                  borderRadius: 0,
                   marginRight: '1em',
                   marginBottom: matchesMD ? '0.8em' : 0
                 }}
@@ -145,12 +145,12 @@ const Signin = ({ history }) => {
             </Grid>
             <Grid item>
               <Button
+                className={classes.button}
                 onClick={signInWithGoogle}
                 variant='contained'
                 color='secondary'
                 disableRipple
                 disableElevation
-                style={{ borderRadius: 0 }}
               >
                 SIGN IN WITH GOOGLE
               </Button>
@@ -158,7 +158,6 @@ const Signin = ({ history }) => {
           </Grid>
         </form>
       </Grid>
-
       <Grid item container direction='column'>
         <Grid item>
           <Button

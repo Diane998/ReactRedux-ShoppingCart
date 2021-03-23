@@ -16,7 +16,8 @@ import {
 const useStyles = makeStyles(theme => ({
   arrow: {
     cursor: 'pointer'
-  }
+  },
+  button: { ...theme.button }
 }));
 
 const Checkout = ({
@@ -219,9 +220,9 @@ const Checkout = ({
             </Grid>
             <Grid item>
               <Button
+                className={classes.button}
                 variant='contained'
                 color='secondary'
-                style={{ padding: '1em 6em', borderRadius: 0 }}
               >
                 CHECKOUT
               </Button>

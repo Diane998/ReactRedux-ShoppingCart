@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
   input: {
     color: 'black'
   },
-  button: {}
+  button: { ...theme.button, marginTop: '2.5em' }
 }));
 
 const Signup = () => {
@@ -180,12 +180,12 @@ const Signup = () => {
             }}
           />
           <Button
+            className={classes.button}
             type='submit'
             variant='contained'
             color='secondary'
             disableRipple
             disableElevation
-            style={{ borderRadius: 0, margin: '1em 0' }}
           >
             CREATE
           </Button>
