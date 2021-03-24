@@ -77,6 +77,7 @@ const Checkout = ({
                     <Typography variant='h3'>{item.name}</Typography>
                     <Button
                       size='medium'
+                      style={{ color: theme.palette.common.crimson }}
                       onClick={() => clearItemFromCart(item)}
                     >
                       REMOVE ITEM
@@ -161,6 +162,7 @@ const Checkout = ({
                           <Typography variant='body2'>{item.name}</Typography>
                           <Button
                             size='medium'
+                            style={{ color: theme.palette.common.crimson }}
                             onClick={() => clearItemFromCart(item)}
                           >
                             REMOVE ITEM

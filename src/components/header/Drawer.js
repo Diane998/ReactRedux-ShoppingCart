@@ -61,7 +61,7 @@ const renderList = (
         key={i}
         button
         component={Link}
-        to={link}
+        to={'/checkout'}
         onClick={() => {
           setDrawerOpen(false);
           setTabIndex(i);
