@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme, makeStyles } from '@material-ui/core/styles';
 import {
@@ -12,6 +12,7 @@ import {
   Button,
   Typography
 } from '@material-ui/core';
+import { loadStripe } from '@stripe/stripe-js';
 
 const useStyles = makeStyles(theme => ({
   arrow: {
@@ -31,6 +32,50 @@ const Checkout = ({
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
+
+  const stripePromise = loadStripe(
+    'pk_test_51Hxnc3DhdNsUybZdKLR0cyelTOGTMYWf8G5Umw78zVC895bPkuhJUG6TpnSSAwWGabcP2SNBlmGuMJx2WAGFinu800F2giYVCs'
+  );
+
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    // Check to see if this is a redirect back from Checkout
+    const query = new URLSearchParams(window.location.search);
+    if (query.get('success')) {
+      setMessage('Order placed! You will receive an email confirmation.');
+    }
+    if (query.get('canceled')) {
+      setMessage(
+        "Order canceled -- continue to shop around and checkout when you're ready."
+      );
+    }
+  }, []);
+
+  const handleClick = async event => {
+    const stripe = await stripePromise;
+    const response = await fetch('/create-checkout-session', {
+      method: 'POST'
+    });
+
+    const session = await response.json();
+    // When the customer clicks on the button, redirect them to Checkout.
+    const result = await stripe.redirectToCheckout({
+      sessionId: session.id
+    });
+
+    if (result.error) {
+      // If `redirectToCheckout` fails due to a browser or network
+      // error, display the localized error message to your customer
+      // using `result.error.message`.
+    }
+  };
+
+  const Message = ({ message }) => (
+    <section>
+      <p>{message}</p>
+    </section>
+  );
 
   return (
     <Grid
@@ -221,13 +266,20 @@ const Checkout = ({
               <Typography variant='h3'>SUBTOTAL: ${total}</Typography>
             </Grid>
             <Grid item>
-              <Button
-                className={classes.button}
-                variant='contained'
-                color='secondary'
-              >
-                CHECKOUT
-              </Button>
+              {message ? (
+                <Message message={message} />
+              ) : (
+                <Button
+                  className={classes.button}
+                  variant='contained'
+                  color='secondary'
+                  id='checkout-button'
+                  role='link'
+                  onClick={handleClick}
+                >
+                  Checkout
+                </Button>
+              )}
             </Grid>
           </Grid>
         </>

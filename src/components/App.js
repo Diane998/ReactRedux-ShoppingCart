@@ -45,6 +45,7 @@ class App extends Component {
 
   render() {
     const { currentUser } = this.props;
+    // const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
 
     return (
       <ThemeProvider theme={theme}>
