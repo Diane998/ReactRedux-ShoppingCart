@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
   button: {
     ...theme.button,
     fontSize: '1.1em',
-    ...theme.buttonFillAnimation
+    ...theme.buttonFillRedAnimation
   }
 }));
 

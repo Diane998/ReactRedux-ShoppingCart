@@ -32,7 +32,14 @@ const useStyles = makeStyles(theme => ({
   input: {
     color: 'black'
   },
-  button: { ...theme.button, margin: '1em 0' }
+  button: { ...theme.button, margin: '1em 0', ...theme.buttonFillRedAnimation },
+  googleSignInButton: {
+    ...theme.button,
+    ...theme.buttonFillWhiteAnimation,
+    margin: '1em 0',
+    color: 'white',
+    background: theme.palette.common.crimson
+  }
 }));
 
 const Signin = ({ history }) => {
@@ -132,7 +139,6 @@ const Signin = ({ history }) => {
                 className={classes.button}
                 type='submit'
                 variant='outlined'
-                color='secondary'
                 disableRipple
                 disableElevation
                 style={{
@@ -145,10 +151,9 @@ const Signin = ({ history }) => {
             </Grid>
             <Grid item>
               <Button
-                className={classes.button}
+                className={classes.googleSignInButton}
                 onClick={signInWithGoogle}
                 variant='contained'
-                color='secondary'
                 disableRipple
                 disableElevation
               >
@@ -162,6 +167,7 @@ const Signin = ({ history }) => {
         <Grid item>
           <Button
             className={classes.button}
+            variant='outlined'
             disableRipple
             onClick={() => history.push('/account/sign-up')}
           >

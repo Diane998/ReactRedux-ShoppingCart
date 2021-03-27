@@ -32,7 +32,11 @@ const useStyles = makeStyles(theme => ({
   input: {
     color: 'black'
   },
-  button: { ...theme.button, marginTop: '2.5em' }
+  button: {
+    ...theme.button,
+    marginTop: '2.5em',
+    ...theme.buttonFillRedAnimation
+  }
 }));
 
 const Signup = () => {
@@ -182,8 +186,7 @@ const Signup = () => {
           <Button
             className={classes.button}
             type='submit'
-            variant='contained'
-            color='secondary'
+            variant='outlined'
             disableRipple
             disableElevation
           >
