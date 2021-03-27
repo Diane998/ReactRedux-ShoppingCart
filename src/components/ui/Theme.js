@@ -30,7 +30,8 @@ export default createMuiTheme({
       orange: arcOrange,
       grey: arcGrey,
       crimson: crimson,
-      black: black
+      black: black,
+      white: white
     },
     primary: {
       main: white
@@ -101,7 +102,7 @@ export default createMuiTheme({
       width: '85vw'
     }
   },
-  buttonFillAnimation: {
+  buttonFillRedAnimation: {
     position: 'relative',
     zIndex: 1,
     '&:hover': {
@@ -112,7 +113,28 @@ export default createMuiTheme({
       content: '""',
       position: 'absolute',
       background: crimson,
-
+      bottom: 0,
+      left: 0,
+      right: 0,
+      top: '100%',
+      zIndex: '-1',
+      transition: 'top 0.2s ease-in'
+    },
+    '&:hover::before': {
+      top: 0
+    }
+  },
+  buttonFillWhiteAnimation: {
+    position: 'relative',
+    zIndex: 1,
+    '&:hover': {
+      color: crimson,
+      border: `1px solid ${crimson}`
+    },
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      background: white,
       bottom: 0,
       left: 0,
       right: 0,
