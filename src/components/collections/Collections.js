@@ -2,7 +2,7 @@ import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
-import CollectionCardContainer from '../../containers/CollectionCardContainer';
+import CollectionCard from './CollectionCard';
 
 const Collections = ({ collections }) => {
   const theme = useTheme();
@@ -10,7 +10,7 @@ const Collections = ({ collections }) => {
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
   const matchesLG = useMediaQuery(theme.breakpoints.down('lg'));
 
-  return collections ? (
+  return (
     <Grid
       container
       spacing={3}
@@ -52,12 +52,12 @@ const Collections = ({ collections }) => {
       >
         {collections.map((collection, i) => (
           <Grid item key={i} style={{ margin: matchesSM ? '1em 0' : 0 }}>
-            <CollectionCardContainer collection={collection} />
+            <CollectionCard collection={collection} />
           </Grid>
         ))}
       </Grid>
     </Grid>
-  ) : null;
+  );
 };
 
 export default Collections;

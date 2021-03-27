@@ -10,7 +10,7 @@ import HomeContainer from '../containers/HomeContainer';
 import ShopContainer from '../containers/ShopContainer';
 import CollectionsContainer from '../containers/CollectionsContainer';
 import CollectionContainer from '../containers/CollectionContainer';
-import WatchViewContainer from '../containers/WatchViewContainer';
+import WatchContainer from '../containers/WatchContainer';
 import SigninContainer from '../containers/SigninContainer';
 import SignupContainer from '../containers/SignupContainer';
 import CheckoutContainer from '../containers/CheckoutContainer';
@@ -63,7 +63,7 @@ class App extends Component {
             <Route
               path='/collections/:collection_id/:watch_id'
               exact
-              component={WatchViewContainer}
+              component={WatchContainer}
             />
             <Route
               path='/account/sign-in'

@@ -18,7 +18,7 @@ const Collection = ({ collection }) => {
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
 
-  return collection ? (
+  return (
     <Grid
       container
       spacing={3}
@@ -111,7 +111,7 @@ const Collection = ({ collection }) => {
         )}
       </Grid>
     </Grid>
-  ) : null;
+  );
 };
 
 export default Collection;

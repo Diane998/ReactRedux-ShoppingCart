@@ -3,7 +3,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme, makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography, Button, CardMedia } from '@material-ui/core';
 import Carousel from 'react-material-ui-carousel';
-import CollectionCardContainer from '../containers/CollectionCardContainer';
+import CollectionCard from './collections/CollectionCard';
 
 const useStyles = makeStyles(theme => ({
   homeContainer: { width: '100vw' },
@@ -125,7 +125,6 @@ const Home = ({ collections, history }) => {
         container
         direction='column'
         jusify='center'
-        alignItems
         className={classes.textContainer}
       >
         <Typography
@@ -154,7 +153,7 @@ const Home = ({ collections, history }) => {
       >
         {collections.map((c, i) => (
           <Grid item key={i} className={classes.collectionContainer}>
-            <CollectionCardContainer collection={c} />
+            <CollectionCard collection={c} />
           </Grid>
         ))}
       </Grid>
