@@ -101,6 +101,29 @@ export default createMuiTheme({
       width: '85vw'
     }
   },
+  buttonFillAnimation: {
+    position: 'relative',
+    zIndex: 1,
+    '&:hover': {
+      color: 'white',
+      border: `1px solid ${crimson}`
+    },
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      background: crimson,
+
+      bottom: 0,
+      left: 0,
+      right: 0,
+      top: '100%',
+      zIndex: '-1',
+      transition: 'top 0.2s ease-in'
+    },
+    '&:hover::before': {
+      top: 0
+    }
+  },
   overrides: {
     MuiInputLabel: {
       root: {
