@@ -18,7 +18,8 @@ const useStyles = makeStyles(theme => ({
   arrow: {
     cursor: 'pointer'
   },
-  button: { ...theme.button }
+  removeButton: {},
+  button: { ...theme.button, ...theme.buttonFillRedAnimation }
 }));
 
 const Checkout = ({
@@ -123,6 +124,7 @@ const Checkout = ({
                     <Button
                       size='medium'
                       style={{ color: theme.palette.common.crimson }}
+                      className={classes.removeButton}
                       onClick={() => clearItemFromCart(item)}
                     >
                       REMOVE ITEM
@@ -271,8 +273,7 @@ const Checkout = ({
               ) : (
                 <Button
                   className={classes.button}
-                  variant='contained'
-                  color='secondary'
+                  variant='outlined'
                   id='checkout-button'
                   role='link'
                   onClick={handleClick}
