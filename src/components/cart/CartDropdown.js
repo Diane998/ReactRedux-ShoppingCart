@@ -66,11 +66,11 @@ const CartDropdown = ({ cartItems, history, toggleCartHidden }) => {
             size='large'
             className={classes.button}
             onClick={() => {
-              history.push('/checkout');
+              history.push('/cart');
               toggleCartHidden();
             }}
           >
-            CHECKOUT
+            GO TO CART
           </Button>
         ) : null}
       </Grid>

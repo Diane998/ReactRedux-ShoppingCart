@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/styles';
 import { routes } from './routes';
 
 import { Tabs, Tab, Popper, Grow } from '@material-ui/core';
-import CartContainer from '../../containers/CartContainer';
+import CartIconContainer from '../../containers/CartIconContainer';
 import CartDropdownContainer from '../../containers/CartDropdownContainer';
 
 const useStyles = makeStyles(theme => ({
@@ -63,7 +63,7 @@ const TabItems = ({ tabIndex, setTabIndex, currentUser, hidden }) => {
               key={i}
               ref={anchorRef}
               disableRipple
-              icon={<CartContainer />}
+              icon={<CartIconContainer />}
               className={classes.tab}
             />
           ) : currentUser && name === 'Sign In' ? (

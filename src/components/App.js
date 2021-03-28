@@ -13,7 +13,7 @@ import CollectionContainer from '../containers/CollectionContainer';
 import WatchContainer from '../containers/WatchContainer';
 import SigninContainer from '../containers/SigninContainer';
 import SignupContainer from '../containers/SignupContainer';
-import CheckoutContainer from '../containers/CheckoutContainer';
+import CartContianer from '../containers/CartContainer';
 
 class App extends Component {
   unsubscribeFromAuth = null;
@@ -79,7 +79,7 @@ class App extends Component {
                 currentUser ? <Redirect to='/' /> : <SignupContainer />
               }
             />
-            <Route path='/checkout' exact component={CheckoutContainer} />
+            <Route path='/cart' exact component={CartContianer} />
           </Switch>
         </BrowserRouter>
       </ThemeProvider>

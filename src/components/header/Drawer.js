@@ -12,10 +12,8 @@ import {
   ListItemIcon,
   IconButton
 } from '@material-ui/core';
-import {
-  Menu as MenuIcon,
-  ShoppingCartOutlined as ShoppingCartOutlinedIcon
-} from '@material-ui/icons';
+import { Menu as MenuIcon } from '@material-ui/icons';
+import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg';
 
 const useStyles = makeStyles(theme => ({
   toolbar: {
@@ -61,7 +59,7 @@ const renderList = (
         key={i}
         button
         component={Link}
-        to={'/checkout'}
+        to={'/cart'}
         onClick={() => {
           setDrawerOpen(false);
           setTabIndex(i);
@@ -70,7 +68,7 @@ const renderList = (
         classes={{ selected: classes.drawerItemSelected }}
       >
         <ListItemIcon>
-          <ShoppingCartOutlinedIcon />
+          <ShoppingIcon style={{ height: 25, width: 25 }} />
         </ListItemIcon>
       </ListItem>
     ) : currentUser && name === 'Sign In' ? (
