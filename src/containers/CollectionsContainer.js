@@ -7,7 +7,7 @@ import {
   selectCollectionsForPreview
 } from '../redux/shop/shopSelectors';
 
-import WithSpinner from '../components/WithSpinner';
+import WithSpinner from '../components/spinner/WithSpinner';
 import Collections from '../components/collections/Collections';
 
 const mapStateToProps = createStructuredSelector({

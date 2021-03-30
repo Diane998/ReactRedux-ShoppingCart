@@ -6,7 +6,7 @@ import {
   selectCollection
 } from '../redux/shop/shopSelectors';
 
-import WithSpinner from '../components/WithSpinner';
+import WithSpinner from '../components/spinner/WithSpinner';
 import Collection from '../components/collection/Collection';
 
 const mapStateToProps = (state, ownProps) => ({

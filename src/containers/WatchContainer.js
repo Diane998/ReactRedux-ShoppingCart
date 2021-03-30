@@ -7,7 +7,7 @@ import {
 } from '../redux/shop/shopSelectors';
 import { addItem } from '../redux/cart/cartActions';
 
-import WithSpinner from '../components/WithSpinner';
+import WithSpinner from '../components/spinner/WithSpinner';
 import Watch from '../components/watch/Watch';
 
 const mapStateToProps = (state, ownProps) => ({
