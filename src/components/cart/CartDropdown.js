@@ -20,8 +20,9 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     ...theme.button,
+    ...theme.buttonFillRedAnimation,
     fontSize: '1em',
-    ...theme.buttonFillRedAnimation
+    marginTop: '1em'
   }
 }));
 
