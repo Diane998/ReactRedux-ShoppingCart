@@ -1,7 +1,8 @@
 import {
   FETCH_COLLECTIONS_START,
   FETCH_COLLECTIONS_SUCCESS,
-  FETCH_COLLECTIONS_FAILURE
+  FETCH_COLLECTIONS_FAILURE,
+  FILTER_BY_COLLECTION
 } from './shopActionTypes';
 import {
   firestore,
@@ -20,3 +21,8 @@ export const fetchCollections = () => async dispatch => {
     dispatch({ type: FETCH_COLLECTIONS_FAILURE, payload: err.message });
   }
 };
+
+export const filterByCollection = collection => ({
+  type: FILTER_BY_COLLECTION,
+  payload: collection
+});

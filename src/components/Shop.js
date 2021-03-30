@@ -15,7 +15,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CollectionItemContainer from '../containers/CollectionItemContainer';
 
 const useStyles = makeStyles(theme => ({
-  accordionDetails: { margin: '0 1em' },
+  accordionDetails: { margin: '0 1em', cursor: 'pointer' },
   textField: {
     '& label.Mui-focused': {
       color: 'blue'
@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Shop = ({ collections }) => {
+const Shop = ({ collections, filterByCollection, filteredCollection }) => {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
@@ -64,6 +64,40 @@ const Shop = ({ collections }) => {
         <Grid item>
           <Typography variant='h2'>FILTER</Typography>
         </Grid>
+        {filteredCollection
+          ? collections.map((collection, i) =>
+              collection.routeName === filteredCollection.routeName ? (
+                <Grid
+                  item
+                  container
+                  direction='row'
+                  alignItems='center'
+                  justify='space-between'
+                  style={{
+                    padding: '0.2em 0.8em',
+                    backgroundColor: 'rgba(0,0,0,0.1)'
+                  }}
+                  key={i}
+                >
+                  <Grid item>
+                    <Typography
+                      variant='body2'
+                      style={{ fontSize: 14, fontWeight: 'bold' }}
+                    >
+                      COLLECTION: {collection.title}
+                    </Typography>
+                  </Grid>
+                  <Grid
+                    item
+                    onClick={() => filterByCollection('')}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <div>&#10005;</div>
+                  </Grid>
+                </Grid>
+              ) : null
+            )
+          : null}
         <Grid item>
           <Accordion elevation={0} className={classes.accordion}>
             <AccordionSummary
@@ -76,7 +110,11 @@ const Shop = ({ collections }) => {
               </Typography>
             </AccordionSummary>
             {collections.map((collection, i) => (
-              <AccordionDetails key={i} className={classes.accordionDetails}>
+              <AccordionDetails
+                key={i}
+                className={classes.accordionDetails}
+                onClick={() => filterByCollection(collection.routeName)}
+              >
                 <Typography variant='body2'>
                   {collection.title} ({collection.items.length})
                 </Typography>
@@ -129,16 +167,25 @@ const Shop = ({ collections }) => {
         spacing={matchesSM ? 0 : 4}
         style={{ width: matchesMD ? '100%' : '80%', margin: 0, padding: 0 }}
       >
-        {collections.map((col, i) =>
-          col.items.map((item, i) => (
-            <Grid item key={i} style={{ margin: matchesSM ? '1em 0' : 0 }}>
-              <CollectionItemContainer
-                item={item}
-                collectionRouteName={col.routeName}
-              />
-            </Grid>
-          ))
-        )}
+        {filteredCollection
+          ? filteredCollection.items.map((item, i) => (
+              <Grid item key={i} style={{ margin: matchesSM ? '1em 0' : 0 }}>
+                <CollectionItemContainer
+                  item={item}
+                  collectionRouteName={filteredCollection.routeName}
+                />
+              </Grid>
+            ))
+          : collections.map((col, i) =>
+              col.items.map((item, i) => (
+                <Grid item key={i} style={{ margin: matchesSM ? '1em 0' : 0 }}>
+                  <CollectionItemContainer
+                    item={item}
+                    collectionRouteName={col.routeName}
+                  />
+                </Grid>
+              ))
+            )}
       </Grid>
     </Grid>
   ) : null;
