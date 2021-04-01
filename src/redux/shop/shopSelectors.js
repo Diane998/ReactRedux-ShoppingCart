@@ -40,12 +40,14 @@ export const selectItem = (collectionId, watchId) =>
 export const selectItemsByPrice = price =>
   createSelector([selectCollectionsForPreview], collections =>
     collections
-      .map(({ items }) =>
-        items.filter(
-          item => item.price >= price.from && item.price <= price.until
-        )
-      )
-      .flat()
+      ? collections
+          .map(({ items }) =>
+            items.filter(
+              item => item.price >= price.from && item.price <= price.until
+            )
+          )
+          .flat()
+      : null
   );
 
 export const selectIsCollectionFetching = createSelector(
