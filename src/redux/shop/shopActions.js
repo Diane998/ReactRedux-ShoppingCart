@@ -2,7 +2,8 @@ import {
   FETCH_COLLECTIONS_START,
   FETCH_COLLECTIONS_SUCCESS,
   FETCH_COLLECTIONS_FAILURE,
-  FILTER_BY_COLLECTION
+  FILTER_BY_COLLECTION,
+  FILTER_BY_PRICE
 } from './shopActionTypes';
 import {
   firestore,
@@ -25,4 +26,9 @@ export const fetchCollections = () => async dispatch => {
 export const filterByCollection = collection => ({
   type: FILTER_BY_COLLECTION,
   payload: collection
+});
+
+export const filterByPrice = filterPrice => ({
+  type: FILTER_BY_PRICE,
+  payload: filterPrice
 });
