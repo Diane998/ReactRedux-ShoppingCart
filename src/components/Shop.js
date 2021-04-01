@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {
@@ -7,7 +7,6 @@ import {
   AccordionSummary,
   AccordionDetails,
   Typography,
-  FormControl,
   TextField,
   InputAdornment
 } from '@material-ui/core';
@@ -15,7 +14,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CollectionItemContainer from '../containers/CollectionItemContainer';
 
 const useStyles = makeStyles(theme => ({
-  accordionDetails: { margin: '0 1em', cursor: 'pointer' },
+  accordionDetails: { margin: '0 1em', cursor: 'pointer', padding: 0 },
   textField: {
     '& label.Mui-focused': {
       color: 'blue'
@@ -35,12 +34,34 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Shop = ({ collections, filterByCollection, filteredCollection }) => {
+const Shop = ({
+  collections,
+  filterByCollection,
+  filterByPrice,
+  filteredByCollection,
+  filteredByPrice
+}) => {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
 
+  const [filterPrice, setfilterPrice] = useState({
+    from: '189',
+    until: '1189'
+  });
+
+  useEffect(() => {
+    filterByPrice(filterPrice);
+  }, [filterByPrice, filterPrice]);
+
+  const { from, until } = filterPrice;
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setfilterPrice({ ...filterPrice, [name]: value });
+  };
+  console.log(filteredByPrice);
   return collections ? (
     <Grid
       container
@@ -64,9 +85,9 @@ const Shop = ({ collections, filterByCollection, filteredCollection }) => {
         <Grid item>
           <Typography variant='h2'>FILTER</Typography>
         </Grid>
-        {filteredCollection
+        {filteredByCollection
           ? collections.map((collection, i) =>
-              collection.routeName === filteredCollection.routeName ? (
+              collection.routeName === filteredByCollection.routeName ? (
                 <Grid
                   item
                   container
@@ -134,28 +155,40 @@ const Shop = ({ collections, filterByCollection, filteredCollection }) => {
               </Typography>
             </AccordionSummary>
             <AccordionDetails className={classes.accordionDetails}>
-              <FormControl className={classes.margin}>
-                <TextField
-                  className={classes.textField}
-                  label='From'
-                  InputProps={{
-                    className: classes.input,
-                    startAdornment: (
-                      <InputAdornment position='start'>$</InputAdornment>
-                    )
-                  }}
-                />
-                <TextField
-                  className={classes.textField}
-                  label='Until'
-                  InputProps={{
-                    className: classes.input,
-                    startAdornment: (
-                      <InputAdornment position='start'>$</InputAdornment>
-                    )
-                  }}
-                />
-              </FormControl>
+              <Grid item container>
+                <Grid item>
+                  <TextField
+                    className={classes.textField}
+                    type='number'
+                    name='from'
+                    value={from}
+                    onChange={handleChange}
+                    label='From'
+                    InputProps={{
+                      className: classes.input,
+                      startAdornment: (
+                        <InputAdornment position='start'>$</InputAdornment>
+                      )
+                    }}
+                  />
+                </Grid>
+                <Grid item>
+                  <TextField
+                    className={classes.textField}
+                    type='number'
+                    name='until'
+                    value={until}
+                    onChange={handleChange}
+                    label='Until'
+                    InputProps={{
+                      className: classes.input,
+                      startAdornment: (
+                        <InputAdornment position='start'>$</InputAdornment>
+                      )
+                    }}
+                  />
+                </Grid>
+              </Grid>
             </AccordionDetails>
           </Accordion>
         </Grid>
@@ -167,12 +200,24 @@ const Shop = ({ collections, filterByCollection, filteredCollection }) => {
         spacing={matchesSM ? 0 : 4}
         style={{ width: matchesMD ? '100%' : '80%', margin: 0, padding: 0 }}
       >
-        {filteredCollection
-          ? filteredCollection.items.map((item, i) => (
+        {filteredByCollection
+          ? filteredByCollection.items.map((item, i) => (
               <Grid item key={i} style={{ margin: matchesSM ? '1em 0' : 0 }}>
                 <CollectionItemContainer
                   item={item}
-                  collectionRouteName={filteredCollection.routeName}
+                  collectionRouteName={filteredByCollection.routeName}
+                />
+              </Grid>
+            ))
+          : filteredByPrice.length
+          ? filteredByPrice.map((item, i) => (
+              <Grid item key={i} style={{ margin: matchesSM ? '1em 0' : 0 }}>
+                <CollectionItemContainer
+                  item={item}
+                  collectionRouteName={item.collectionName
+                    .toLowerCase()
+                    .split(' ')
+                    .join('-')}
                 />
               </Grid>
             ))

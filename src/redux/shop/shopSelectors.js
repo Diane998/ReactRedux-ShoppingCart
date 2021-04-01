@@ -2,6 +2,16 @@ import { createSelector } from 'reselect';
 
 const selectShop = state => state.shop;
 
+const selectFilterByCollection = createSelector(
+  [selectShop],
+  shop => shop.filterByCollection
+);
+
+const selectFilterByPrice = createSelector(
+  [selectShop],
+  shop => shop.filterByPrice
+);
+
 export const selectShopCollections = createSelector(
   [selectShop],
   shop => shop.collections
@@ -21,10 +31,21 @@ export const selectCollection = collectionId =>
 export const selectItem = (collectionId, watchId) =>
   createSelector([selectShopCollections], collections =>
     collections
-      ? collections[collectionId].items.filter((itemObj, i) =>
-          Object.values(itemObj).includes(watchId) ? itemObj : null
+      ? collections[collectionId].items.filter((item, i) =>
+          Object.values(item).includes(watchId) ? item : null
         )
       : null
+  );
+
+export const selectItemsByPrice = price =>
+  createSelector([selectCollectionsForPreview], collections =>
+    collections
+      .map(({ items }) =>
+        items.filter(
+          item => item.price >= price.from && item.price <= price.until
+        )
+      )
+      .flat()
   );
 
 export const selectIsCollectionFetching = createSelector(
