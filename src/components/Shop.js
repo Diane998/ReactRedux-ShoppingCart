@@ -53,7 +53,7 @@ const Shop = ({
 
   useEffect(() => {
     filterByPrice(filterPrice);
-  }, [filterPrice]);
+  }, [filterByPrice, filterPrice]);
 
   const { from, until } = filterPrice;
 

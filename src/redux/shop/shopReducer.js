@@ -10,7 +10,7 @@ const INITIAL_STATE = {
   collections: null,
   isFetching: false,
   errMeassage: '',
-  filterByCollection: '',
+  filterByCollection: null,
   filterByPrice: null
 };
 

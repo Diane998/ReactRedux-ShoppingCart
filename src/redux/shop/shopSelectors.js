@@ -39,7 +39,7 @@ export const selectItem = (collectionId, watchId) =>
 
 export const selectItemsByPrice = price =>
   createSelector([selectCollectionsForPreview], collections =>
-    collections
+    collections && price
       ? collections
           .map(({ items }) =>
             items.filter(
