@@ -61,7 +61,7 @@ const Shop = ({
     const { name, value } = e.target;
     setfilterPrice({ ...filterPrice, [name]: value });
   };
-  console.log(filteredByPrice);
+
   return collections ? (
     <Grid
       container
